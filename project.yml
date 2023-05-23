@@ -1,0 +1,43 @@
+---
+settings:
+  name: VSC, VASA Provider, and SRA 9.7
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  langs: it-it,us-en,ja-jp,ko-kr,zh-cn,zh-tw,de-de,es-es,fr-fr
+sidebar:
+  entries:
+  - title: Documenti VSC, VASA Provider e SRA
+    url: "/index.html"
+  - title: Note di rilascio
+    url: "/release-notes.html"
+  - title: Avvio rapido
+    url: "/qsg.html"
+  - section: deploy
+  - section: manage
+  - title: Note legali
+    url: "/legal-notices.html"
+homepage:
+  tiles:
+  - title: Inizia subito
+    links:
+    - title: Note di rilascio
+      url: "/release-notes.html"
+    - title: Avvio rapido
+      url: "/qsg.html"
+    - title: Implementazione e aggiornamento
+      url: "/deploy/concept-virtual-storage-console-overview.html"
+    - title: Gestire
+      url: "/manage/concept-workflow-for-configuring-the-unified-appliance.html"
+  - title: Più risorse
+    links:
+    - title: Documentazione per le versioni precedenti di VSC, VASA Provider e SRA
+      url: https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=30048
+    - title: 'Knowledge base di NetApp: VSC, VASA Provider e SRA'
+      url: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/VSC_and_VASA_Provider
+    - title: NetApp Import Utility - Video
+      url: https://www.youtube.com/watch?v=CEQmIEzNVfA
+    - title: NetApp Community - VSC, VASA Provider e SRA
+      url: https://community.netapp.com/t5/VMware-Solutions-Discussions/bd-p/vmware-solutions-discussions

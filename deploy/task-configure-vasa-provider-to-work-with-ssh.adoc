@@ -1,0 +1,25 @@
+---
+permalink: deploy/task-configure-vasa-provider-to-work-with-ssh.html 
+sidebar: sidebar 
+keywords: configuring, vasa, provider, work, with, ssh, 
+summary: 'È possibile configurare il provider VASA in modo che utilizzi SSH per un accesso sicuro configurando l"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA).' 
+---
+= Configurare il provider VASA per l'utilizzo con SSH
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare il provider VASA in modo che utilizzi SSH per un accesso sicuro configurando l'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA).
+
+.A proposito di questa attività
+Quando si configura SSH, è necessario accedere come utente di manutenzione. Questo perché l'accesso root al provider VASA è stato disattivato. Se si utilizzano altre credenziali di accesso, non è possibile utilizzare SSH per accedere al provider VASA.
+
+.Fasi
+. Da vCenter Server, aprire una console per l'appliance virtuale per VSC, VASA Provider e SRA.
+. Accedere come utente di manutenzione.
+. Invio `3` Per selezionare *Configurazione di sistema*.
+. Invio `6` Per selezionare *Enable SSH Access* (attiva accesso SSH).
+. Invio `y` nella finestra di dialogo di conferma.
+

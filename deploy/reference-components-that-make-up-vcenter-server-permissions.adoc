@@ -1,0 +1,109 @@
+---
+permalink: deploy/reference-components-that-make-up-vcenter-server-permissions.html 
+sidebar: sidebar 
+keywords: components, vcenter, server, permissions, 
+summary: VCenter Server riconosce le autorizzazioni e non i privilegi. Ogni autorizzazione vCenter Server è composta da tre componenti. 
+---
+= Componenti delle autorizzazioni vCenter Server
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VCenter Server riconosce le autorizzazioni e non i privilegi. Ogni autorizzazione vCenter Server è composta da tre componenti.
+
+VCenter Server include i seguenti componenti:
+
+* Uno o più privilegi (il ruolo)
++
+I privilegi definiscono le attività che un utente può eseguire.
+
+* Un oggetto vSphere
++
+L'oggetto è la destinazione delle attività.
+
+* Un utente o un gruppo
++
+L'utente o il gruppo definisce chi può eseguire l'attività.
+
+
+
+Come illustrato nel diagramma seguente, per poter disporre di un'autorizzazione è necessario disporre di tutti e tre gli elementi.
+
+[NOTE]
+====
+In questo diagramma, le caselle grigie indicano i componenti presenti in vCenter Server e le caselle bianche indicano i componenti presenti nel sistema operativo in cui è in esecuzione vCenter Server.
+
+====
+image::../media/permission-updated-graphic.png[grafico aggiornato con permesso]
+
+
+
+== Privilegi
+
+Sono associati due tipi di privilegi a Virtual Storage Console per VMware vSphere:
+
+* Privilegi vCenter Server nativi
++
+Questi privilegi vengono forniti con vCenter Server.
+
+* Privilegi specifici di VSC
++
+Questi privilegi sono definiti per attività VSC specifiche. Sono esclusivi di VSC.
+
+
+
+Le attività VSC richiedono privilegi specifici di VSC e privilegi nativi di vCenter Server. Questi privilegi costituiscono "`role`" per l'utente. Un'autorizzazione può avere più privilegi. Questi privilegi sono riservati a un utente che ha effettuato l'accesso a vCenter Server.
+
+[NOTE]
+====
+Per semplificare l'utilizzo di vCenter Server RBAC, VSC offre diversi ruoli standard che contengono tutti i privilegi nativi e specifici di VSC necessari per eseguire le attività VSC.
+
+====
+Se si modificano i privilegi all'interno di un'autorizzazione, l'utente associato a tale autorizzazione deve disconnettersi e quindi accedere per attivare l'autorizzazione aggiornata.
+
+[cols="1a,1a,1a"]
+|===
+| Privilegio | Ruoli | Attività 
+
+
+ a| 
+Menu:NetApp Virtual Storage Console[Visualizza]
+ a| 
+* Amministratore di VSC
+* Provisioning VSC
+* VSC di sola lettura
+
+ a| 
+Tutte le attività specifiche del provider VSC e VASA richiedono il privilegio di visualizzazione.
+
+
+
+ a| 
+Menu:NetApp Virtual Storage Console[Gestione basata su policy > Gestione] o menu:privilege.nvpfVSC.VASAGroup.com.netapp.nvpf.label[Management]
+ a| 
+Amministratore di VSC
+ a| 
+Attività del provider VSC e VASA correlate ai profili di capacità dello storage e alle impostazioni delle soglie.
+
+|===
+
+
+== Oggetti vSphere
+
+Le autorizzazioni sono associate agli oggetti vSphere, come vCenter Server, host ESXi, macchine virtuali, datastore, data center, e cartelle. È possibile assegnare autorizzazioni a qualsiasi oggetto vSphere. In base all'autorizzazione assegnata a un oggetto vSphere, vCenter Server determina chi può eseguire le attività su tale oggetto. Per attività specifiche di VSC, le autorizzazioni vengono assegnate e validate solo a livello di cartella principale (vCenter Server) e non su altre entità. Ad eccezione del funzionamento del plugin VAAI, in cui i permessi sono validati rispetto all'ESXi interessato.
+
+
+
+== Utenti e gruppi
+
+È possibile utilizzare Active Directory (o la macchina vCenter Server locale) per configurare utenti e gruppi di utenti. È quindi possibile utilizzare le autorizzazioni vCenter Server per concedere l'accesso a questi utenti o gruppi per consentire loro di eseguire attività VSC specifiche.
+
+[NOTE]
+====
+Queste autorizzazioni vCenter Server si applicano agli utenti VSC vCenter e non agli amministratori VSC. Per impostazione predefinita, gli amministratori VSC hanno accesso completo al prodotto e non richiedono autorizzazioni assegnate.
+
+====
+Gli utenti e i gruppi non hanno ruoli assegnati. Ottengono l'accesso a un ruolo facendo parte di un'autorizzazione vCenter Server.

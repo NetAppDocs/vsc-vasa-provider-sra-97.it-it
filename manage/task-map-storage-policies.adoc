@@ -1,0 +1,28 @@
+---
+permalink: manage/task-map-storage-policies.html 
+sidebar: sidebar 
+keywords: mapping, storage, policies, 
+summary: È necessario mappare i criteri di storage del sito protetto ai criteri di storage del sito di recovery per il piano di recovery, in modo da collocare le macchine virtuali ripristinate negli archivi dati appropriati in base alle mappature. Una volta ripristinata la macchina virtuale nel sito di ripristino, i criteri di storage delle macchine virtuali mappati verranno assegnati alla macchina virtuale. 
+---
+= Mappare le policy di storage
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario mappare i criteri di storage del sito protetto ai criteri di storage del sito di recovery per il piano di recovery, in modo da collocare le macchine virtuali ripristinate negli archivi dati appropriati in base alle mappature. Una volta ripristinata la macchina virtuale nel sito di ripristino, i criteri di storage delle macchine virtuali mappati verranno assegnati alla macchina virtuale.
+
+.Fasi
+. Sul client vSphere, fare clic su menu:Site Recovery[Open Site Recovery].
+. Nella scheda *Site Pair*, fare clic su menu:Configure[Storage Policy Mappings].
+. Selezionare il sito desiderato, quindi fare clic su *New* (nuovo) per creare una nuova mappatura.
+. Selezionare l'opzione *preparazione automatica delle mappature per i criteri di storage con nomi corrispondenti*, quindi fare clic su *AVANTI*.
++
+SRM selezionerà i criteri di storage sul sito protetto per il quale esiste un criterio di storage con lo stesso nome sul sito di recovery. Tuttavia, se si seleziona l'opzione di mappatura manuale, è possibile selezionare più criteri di storage.
+
+. Fare clic su *Add Mappings* (Aggiungi mapping) e fare clic su *NEXT* (AVANTI).
+. Nella sezione *mappatura inversa*, selezionare le caselle di controllo richieste per la mappatura, quindi fare clic su *AVANTI*.
+. Nella sezione *Pronto per il completamento*, rivedere le selezioni e fare clic su *FINE*.
+

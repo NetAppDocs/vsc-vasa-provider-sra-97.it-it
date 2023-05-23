@@ -1,0 +1,27 @@
+---
+permalink: manage/task-migrate-standard-virtual-machines-to-vvol-datastores.html 
+sidebar: sidebar 
+keywords: migrate, traditional, virtual, machines, datastores, 
+summary: 'È possibile migrare le macchine virtuali da datastore tradizionali a datastore di volumi virtuali (vVol) per sfruttare la gestione delle macchine virtuali basata su policy e altre funzionalità di vVol. I datastore di vVol consentono di soddisfare i requisiti di carico di lavoro più elevati.' 
+---
+= Migrare le macchine virtuali tradizionali negli archivi dati vVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile migrare le macchine virtuali da datastore tradizionali a datastore di volumi virtuali (vVol) per sfruttare la gestione delle macchine virtuali basata su policy e altre funzionalità di vVol. I datastore di vVol consentono di soddisfare i requisiti di carico di lavoro più elevati.
+
+.Prima di iniziare
+È necessario assicurarsi che il provider VASA non sia in esecuzione su nessuna delle macchine virtuali che si intende migrare. Se si esegue la migrazione di una macchina virtuale che esegue VASA Provider in un datastore vVols, non è possibile eseguire alcuna operazione di gestione, inclusa l'accensione delle macchine virtuali presenti negli archivi dati vVols.
+
+.A proposito di questa attività
+Quando si esegue la migrazione da un datastore tradizionale a un datastore VVol, vCenter Server utilizza le API vStorage per l'integrazione array (VAAI) per lo spostamento dei dati da datastore VMFS, ma non da un file VMDK NFS. Gli offload VAAI riducono normalmente il carico sull'host.
+
+.Fasi
+. Fare clic con il pulsante destro del mouse sulla macchina virtuale che si desidera migrare, quindi fare clic su *Migrate*.
+. Selezionare *Cambia solo storage*, quindi fare clic su *Avanti*.
+. Selezionare un formato di disco virtuale, un criterio di storage delle macchine virtuali e un datastore VVol che corrispondano alle funzioni dell'archivio dati che si sta migrando, quindi fare clic su *Avanti*.
+. Rivedere le impostazioni, quindi fare clic su *fine*.
+

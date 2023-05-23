@@ -1,0 +1,39 @@
+---
+permalink: deploy/reference-error-during-fresh-deployment-of-virtual-appliance-for-vsc-vasa-provider-and-sra.html 
+sidebar: sidebar 
+keywords: error, during, fresh, deployment, virtual, appliance, vsc, vasa, provider, sra, 
+summary: 'Errore durante la nuova implementazione dell"appliance virtuale per VSC, VASA Provider e SRA' 
+---
+= Errore durante la nuova implementazione dell'appliance virtuale per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Problema
+
+Il registro degli errori "`vmware tools OVF vCenter Configuration not found`" viene visualizzato durante la nuova implementazione dell'appliance virtuale per VSC, VASA Provider e SRA quando viene utilizzato un indirizzo vCenter ServerIPv4 non valido.
+
+
+
+== Causa
+
+L'appliance virtuale per VSC, VASA Provider e SRA supporta gli indirizzi IPv4 e IPv6. Se l'utente fornisce un indirizzo IPv4 per vCenter Server non disponibile nella rete e non è fornito alcun indirizzo IPv6, questi messaggi del logger vengono visualizzati sulla console di manutenzione.
+
+
+
+== Azione correttiva
+
+Per rimuovere l'errore, attenersi alla seguente procedura:
+
+. Accedere alla console di manutenzione.
+. Accedere alla shell di diagnostica.
+. Modificare l'utente da "`diag`" a "`root`" utilizzando ``sudo su``comando.
+. Modificare il file di interfaccia utilizzando l'editor vi `vi /etc/network/interface`.
+. Rimuovere la voce per "`inet6`".
+. Salvare il file e riavviare l'appliance virtuale per VSC, VASA Provider e SRA.
+
+
+Dopo aver riavviato l'appliance virtuale, non vengono visualizzati messaggi di errore.

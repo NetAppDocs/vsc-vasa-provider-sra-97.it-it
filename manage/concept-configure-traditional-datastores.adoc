@@ -1,0 +1,14 @@
+---
+permalink: manage/concept-configure-traditional-datastores.html 
+sidebar: sidebar 
+keywords: configuring, traditional, datastores, and, virtual, machines, 
+summary: 'È possibile utilizzare Virtual Storage Console (VSC) per configurare datastore e macchine virtuali nel server vCenter. Gli archivi dati e le macchine virtuali forniti da VSC vengono visualizzati nella dashboard di VSC. Ciò consente di monitorare e gestire facilmente questi datastore e macchine virtuali.' 
+---
+= Configurare datastore e macchine virtuali tradizionali
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare Virtual Storage Console (VSC) per configurare datastore e macchine virtuali nel server vCenter. Gli archivi dati e le macchine virtuali forniti da VSC vengono visualizzati nella dashboard di VSC. Ciò consente di monitorare e gestire facilmente questi datastore e macchine virtuali.

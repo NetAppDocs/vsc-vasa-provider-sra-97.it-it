@@ -1,0 +1,18 @@
+---
+permalink: deploy/concept-privileges-required-for-vsc-tasks.html 
+sidebar: sidebar 
+keywords: privileges, required, vsc, tasks, 
+summary: 'Le diverse attività di Virtual Storage Console per VMware vSphere richiedono diverse combinazioni di privilegi specifici per (VSC) e i privilegi nativi di vCenter Server.' 
+---
+= Privilegi richiesti per le attività VSC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le diverse attività di Virtual Storage Console per VMware vSphere richiedono diverse combinazioni di privilegi specifici per (VSC) e i privilegi nativi di vCenter Server.
+
+Informazioni sui privilegi richiesti per le attività VSC sono disponibili nell'articolo della Knowledge base di NetApp 1032542.
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Virtual_Storage_Console_for_VMware_vSphere/How_to_configure_RBAC_for_Virtual_Storage_Console["Come configurare RBAC per Virtual Storage Console"^]

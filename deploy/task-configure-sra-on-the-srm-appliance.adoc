@@ -1,0 +1,31 @@
+---
+permalink: deploy/task-configure-sra-on-srm-appliance.html 
+sidebar: sidebar 
+keywords: configuring, sra, srm, appliance, 
+summary: 'Dopo aver implementato l"appliance SRM, è necessario configurare SRA sull"appliance SRM. La corretta configurazione di SRA consente a SRM Appliance di comunicare con SRA per la gestione del disaster recovery. È necessario memorizzare l"appliance virtuale per le credenziali VSC, VASA Provider e SRA (indirizzo IP e password amministratore) nell"appliance SRM per consentire la comunicazione tra l"appliance SRM e SRA.' 
+---
+= Configurare SRA sull'appliance SRM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver implementato l'appliance SRM, è necessario configurare SRA sull'appliance SRM. La corretta configurazione di SRA consente a SRM Appliance di comunicare con SRA per la gestione del disaster recovery. È necessario memorizzare l'appliance virtuale per le credenziali VSC, VASA Provider e SRA (indirizzo IP e password amministratore) nell'appliance SRM per consentire la comunicazione tra l'appliance SRM e SRA.
+
+.Prima di iniziare
+È necessario caricare `tar.gz` File sull'appliance SRM.
+
+.A proposito di questa attività
+La configurazione di SRA sull'appliance SRM memorizza le credenziali SRA nell'appliance SRM.
+
+.Fasi
+. Effettuare l'accesso utilizzando l'account amministratore all'appliance SRM utilizzando PuTTY.
+. Passare all'utente root utilizzando il comando: `su root`
+. Nella posizione del log, immettere il comando per ottenere l'ID del docker utilizzato da SRA `docker ps -l`
+. Per accedere all'ID contenitore, immettere il comando `docker exec -it -u srm <container id> sh`
+. Configurare SRM con l'appliance virtuale per VSC, VASA Provider e indirizzo IP e password SRA utilizzando il comando: `perl command.pl -I <va-IP> administrator <va-password>`
++
+Viene visualizzato un messaggio di conferma dell'avvenuta memorizzazione delle credenziali di storage. SRA può comunicare con il server SRA utilizzando l'indirizzo IP, la porta e le credenziali forniti.
+
+

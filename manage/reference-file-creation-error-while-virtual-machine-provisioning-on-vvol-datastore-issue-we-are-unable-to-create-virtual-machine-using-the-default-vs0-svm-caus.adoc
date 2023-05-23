@@ -1,0 +1,37 @@
+---
+permalink: manage/reference-file-creation-error-while-virtual-machine-provisioning-on-vvol-datastore-issue-we-are-unable-to-create-virtual-machine-using-the-default-vs0-svm-caus.html 
+sidebar: sidebar 
+keywords: error, provisioning, virtual, machine, troubleshooting, error, 
+summary: Errore di creazione del file durante il provisioning di macchine virtuali su datastore VVol 
+---
+= Errore di creazione del file durante il provisioning di macchine virtuali su datastore VVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Problema
+
+Impossibile creare una macchina virtuale utilizzando la SVM (Storage Virtual Machine) predefinita o qualsiasi SVM (Mixed Storage Virtual Machine) con LIFS di dati IPv6 e IPv4 configurati.
+
+
+
+== Causa
+
+Il problema si verifica perché il vs0 predefinito ha LIF di dati IPv6 e IPv4 e non è un datastore puramente IPv4.
+
+
+
+== Azione correttiva
+
+È possibile eseguire il provisioning di una macchina virtuale con vs0 seguendo la procedura riportata di seguito:
+
+. Utilizzare l'applicazione System Manager per disattivare tutte le LIF IPv6 .
+. Riscopri il cluster.
+. Eseguire il provisioning di una macchina virtuale nel datastore VVol su cui si è verificato un errore di provisioning.
++
+Il provisioning della macchina virtuale è stato eseguito correttamente.
+
+

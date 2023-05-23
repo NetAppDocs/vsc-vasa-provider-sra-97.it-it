@@ -1,0 +1,49 @@
+---
+permalink: deploy/reference-configure-guest-operating-system-scripts.html 
+sidebar: sidebar 
+keywords: guest, operating, system, configuring, scripts, 
+summary: Le immagini ISO degli script del sistema operativo guest sono montate sulla Virtual Storage Console per il server VMware vSphere. Per utilizzare gli script del sistema operativo guest per impostare i timeout dello storage per le macchine virtuali, è necessario montare gli script dal client vSphere. 
+---
+= Configurare gli script del sistema operativo guest
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le immagini ISO degli script del sistema operativo guest sono montate sulla Virtual Storage Console per il server VMware vSphere. Per utilizzare gli script del sistema operativo guest per impostare i timeout dello storage per le macchine virtuali, è necessario montare gli script dal client vSphere.
+
+[cols="1a,1a,1a"]
+|===
+| Tipo di sistema operativo | impostazioni di timeout di 60 secondi | impostazioni di timeout di 190 secondi 
+
+
+ a| 
+Linux
+ a| 
+`_https_://<appliance_ip>:8143/vsc/public/writable/linux_gos_timeout-install.iso`
+ a| 
+`_https_://<appliance_ip>:8143/vsc/public/writable/linux_gos_timeout_190-install.iso`
+
+
+
+ a| 
+Windows
+ a| 
+`_https_://<appliance_ip>:8143/vsc/public/writable/windows_gos_timeout.iso`
+ a| 
+`_https_://<appliance_ip>:8143/vsc/public/writable/windows_gos_timeout_190.iso`
+
+
+
+ a| 
+Solaris
+ a| 
+`_https_://<appliance_ip>:8143/vsc/public/writable/solaris_gos_timeout-install.iso`
+ a| 
+`_https_://<appliance_ip>:8143/vsc/public/writable/solaris_gos_timeout_190-install.iso`
+
+|===
+È necessario installare lo script dalla copia dell'istanza di VSC registrata nel vCenter Server che gestisce la macchina virtuale. Se l'ambiente include più vCenter Server, selezionare il server che contiene la macchina virtuale per cui si desidera impostare i valori di timeout dello storage.
+
+È necessario accedere alla macchina virtuale ed eseguire lo script per impostare i valori di timeout dello storage.

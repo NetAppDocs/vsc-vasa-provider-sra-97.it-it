@@ -1,0 +1,42 @@
+---
+permalink: deploy/task-configure-user-role-and-privileges.html 
+sidebar: sidebar 
+keywords: user, roles, configuring, user, roles, and, privileges, 
+summary: 'È possibile configurare nuovi ruoli utente per la gestione dei sistemi storage utilizzando il file JSON fornito con l"appliance virtuale per VSC, provider VASA, SRA e Gestore di sistema ONTAP.' 
+---
+= Configurare i ruoli e i privilegi degli utenti
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare nuovi ruoli utente per la gestione dei sistemi storage utilizzando il file JSON fornito con l'appliance virtuale per VSC, provider VASA, SRA e Gestore di sistema ONTAP.
+
+.Prima di iniziare
+* Il file dei privilegi ONTAP dovrebbe essere stato scaricato dall'appliance virtuale per VSC, provider VASA e SRA utilizzando `+https://{virtual_appliance_IP}:9083/vsc/config/VSC_ONTAP_User_Privileges.zip+`.
+* È necessario aver configurato Gestore di sistema di ONTAP 9.7.
+* Si dovrebbe aver effettuato l'accesso con privilegi di amministratore per il sistema di storage.
+
+
+.fasi
+. Decomprimere il scaricato `+https://{virtual_appliance_IP}:9083/vsc/config/VSC_ONTAP_User_Privileges.zip+` file.
+. Accedere a Gestore di sistema di ONTAP.
+. Fare clic su menu:CLUSTER[Impostazioni > utenti e ruoli].
+. Fare clic su *Add User* (Aggiungi utente).
+. Nella finestra di dialogo *Aggiungi utente*, selezionare *prodotti di virtualizzazione*.
+. Fare clic su *Browse* (Sfoglia) per selezionare e caricare il file ONTAP Privileges JSON.
++
+Il campo DEL PRODOTTO viene compilato automaticamente.
+
+. Selezionare la funzionalità desiderata dal menu a discesa *PRODUCT CAPABILITY* (FUNZIONALITÀ DEL PRODOTTO).
++
+Il campo *ROLE* viene compilato automaticamente in base alla funzionalità del prodotto selezionata.
+
+. Immettere il nome utente e la password richiesti.
+. Selezionare i privilegi (Discovery, Create Storage, Modify Storage, Destroy Storage) richiesti per l'utente, quindi fare clic su *Add* (Aggiungi).
+
+
+.Risultati
+Il nuovo ruolo e l'utente vengono aggiunti e i privilegi dettagliati vengono visualizzati sotto il ruolo configurato.

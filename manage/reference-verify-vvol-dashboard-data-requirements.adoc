@@ -1,0 +1,49 @@
+---
+permalink: manage/reference-verify-vvol-dashboard-data-requirements.html 
+sidebar: sidebar 
+keywords: vVol, dashboard, data, requirements, 
+summary: 'È necessario verificare alcuni requisiti importanti della dashboard vVol per visualizzare i dettagli dinamici dei datastore e delle macchine virtuali VMware Virtual Volumes (vVol).' 
+---
+= Requisiti dei dati del dashboard vVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario verificare alcuni requisiti importanti della dashboard vVol per visualizzare i dettagli dinamici dei datastore e delle macchine virtuali VMware Virtual Volumes (vVol).
+
+La seguente tabella presenta una panoramica di ciò che è necessario verificare se il dashboard vVol non visualizza le metriche delle performance per gli archivi dati E le macchine virtuali SAN vVol con provisioning.
+
+[cols="1a,1a"]
+|===
+| Considerazioni | Descrizione 
+
+
+ a| 
+Prima implementazione dei servizi API di OnCommand
+ a| 
+* Se si utilizzano cluster ONTAP 9.6 o versioni precedenti, si utilizzano i servizi API di OnCommand 2.1 o versioni successive.
++
+Se si utilizza ONTAP 9.7 e versioni successive, non è necessario che i servizi API di OnCommand siano registrati presso il provider VASA.
+
+* Dopo aver scaricato e installato i servizi API di OnCommand dal sito di supporto di OnCommand, è necessario seguire le istruzioni di installazione fornite nella _Guida all'installazione e all'installazione dei servizi API di API di NetApp.
+* Ogni istanza del provider VASA deve disporre di un'istanza dei servizi API OnCommand dedicata.
++
+I servizi API di OnCommand non devono essere condivisi tra più istanze di provider VASA o server vCenter.
+
+* I servizi API di OnCommand sono in esecuzione e accessibili.
+
+
+
+
+ a| 
+Sistema storage
+ a| 
+* Si utilizza ONTAP 9.3 o versione successiva.
+* Si stanno utilizzando le credenziali appropriate per il sistema di storage.
+* Il sistema storage è attivo e accessibile.
+* La macchina virtuale selezionata deve utilizzare almeno un datastore vVol e le operazioni di i/o vengono eseguite sul disco della macchina virtuale.
+
+
+|===

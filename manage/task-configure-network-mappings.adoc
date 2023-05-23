@@ -1,0 +1,39 @@
+---
+permalink: manage/task-configure-network-mappings.html 
+sidebar: sidebar 
+keywords: configuring, network, mappings, 
+summary: È necessario mappare le reti sul sito protetto e sul sito di ripristino per consentire la comunicazione tra di esse. 
+---
+= Configurare le mappature di rete
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario mappare le reti sul sito protetto e sul sito di ripristino per consentire la comunicazione tra di esse.
+
+.Prima di iniziare
+È necessario aver collegato i siti protetti e di ripristino.
+
+.Fasi
+. Accedere a vCenter Server e fare clic su menu:Site Recovery[Sites].
+. Selezionare il sito protetto, quindi fare clic su *Gestisci*.
+. Nella scheda Manage (Gestisci), selezionare *Network Mappings* (Mapping di rete).
+. Fare clic su image:../media/new-network-mappings.gif[""] per creare una nuova mappatura di rete.
++
+Viene visualizzata la procedura guidata Create Network Mapping.
+
+. Nella procedura guidata Create Network Mapping (Crea mappatura di rete), eseguire le seguenti operazioni:
++
+.. Selezionare *prepara automaticamente mappature per reti con nomi corrispondenti* e fare clic su *Avanti*.
+.. Selezionare gli oggetti del data center richiesti per i siti protetti e di ripristino e fare clic su *Aggiungi mapping*.
+.. Fare clic su *Avanti* dopo aver creato correttamente le mappature.
+.. Selezionare l'oggetto utilizzato in precedenza per creare il mapping inverso, quindi fare clic su *fine*.
+
+
+
+
+.Risultati
+La pagina Network Mappings (Mapping di rete) visualizza le risorse protette del sito e le risorse del sito di ripristino. È possibile seguire la stessa procedura per le altre reti del proprio ambiente.

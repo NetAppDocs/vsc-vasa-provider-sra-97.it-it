@@ -1,0 +1,45 @@
+---
+permalink: deploy/reference-key-points-about-assigning-and-modifying-permissions.html 
+sidebar: sidebar 
+keywords: key, points, about, assigning, modifying, permissions, vcenter, server, 
+summary: 'Esistono diversi punti chiave da tenere a mente quando si utilizzano le autorizzazioni di vCenter Server. Il successo di un"attività di Virtual Storage Console per VMware vSphere dipende dalla posizione in cui è stata assegnata un"autorizzazione o dalle azioni intraprese da un utente dopo la modifica di un"autorizzazione.' 
+---
+= Punti chiave relativi all'assegnazione e alla modifica delle autorizzazioni per vCenter Server
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Esistono diversi punti chiave da tenere a mente quando si utilizzano le autorizzazioni di vCenter Server. Il successo di un'attività di Virtual Storage Console per VMware vSphere dipende dalla posizione in cui è stata assegnata un'autorizzazione o dalle azioni intraprese da un utente dopo la modifica di un'autorizzazione.
+
+
+
+== Assegnazione delle autorizzazioni
+
+È necessario impostare le autorizzazioni di vCenter Server solo se si desidera limitare l'accesso agli oggetti e alle attività di vSphere. In caso contrario, è possibile accedere come amministratore. Questo login consente di accedere automaticamente a tutti gli oggetti vSphere.
+
+La posizione in cui si assegna un'autorizzazione determina le attività VSC che un utente può eseguire.
+
+A volte, per garantire il completamento di un'attività, è necessario assegnare l'autorizzazione a un livello superiore, ad esempio l'oggetto root. Questo accade quando un'attività richiede un privilegio che non si applica a un oggetto vSphere specifico (ad esempio, il monitoraggio dell'attività) o quando un privilegio richiesto si applica a un oggetto non vSphere (ad esempio, un sistema storage).
+
+In questi casi, è possibile impostare un'autorizzazione in modo che venga ereditata dalle entità figlio. È inoltre possibile assegnare altre autorizzazioni alle entità figlio. L'autorizzazione assegnata a un'entità figlio sovrascrive sempre l'autorizzazione ereditata dall'entità padre. Ciò significa che è possibile concedere autorizzazioni a un'entità figlio per limitare l'ambito di un'autorizzazione assegnata a un oggetto root ed ereditata dall'entità figlio.
+
+
+TIP: A meno che le policy di sicurezza aziendali non richiedano autorizzazioni più restrittive, è consigliabile assegnare autorizzazioni all'oggetto root (anche noto come cartella root).
+
+
+
+== Permessi e oggetti non vSphere
+
+L'autorizzazione creata viene applicata a un oggetto non vSphere. Ad esempio, un sistema storage non è un oggetto vSphere. Se un privilegio viene applicato a un sistema di storage, è necessario assegnare l'autorizzazione contenente tale privilegio all'oggetto root VSC perché non esiste alcun oggetto vSphere a cui è possibile assegnarlo.
+
+Ad esempio, qualsiasi autorizzazione che includa un privilegio come il privilegio VSC "Add/Modify/Skip storage Systems" deve essere assegnata a livello di oggetto root.
+
+
+
+== Modifica delle autorizzazioni
+
+È possibile modificare un'autorizzazione alla volta.
+
+Se si modificano i privilegi all'interno di un'autorizzazione, l'utente associato a tale autorizzazione deve disconnettersi e quindi accedere nuovamente per attivare l'autorizzazione aggiornata.

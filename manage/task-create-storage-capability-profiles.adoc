@@ -1,0 +1,127 @@
+---
+permalink: manage/task-create-storage-capability-profiles.html 
+sidebar: sidebar 
+keywords: configuring, storage, capability, profiles, 
+summary: È possibile utilizzare VSC per creare manualmente profili di capacità storage, generare automaticamente un profilo in base alle funzionalità di un datastore o modificare un profilo in base alle proprie esigenze. 
+---
+= Configurare i profili delle funzionalità di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare VSC per creare manualmente profili di capacità storage, generare automaticamente un profilo in base alle funzionalità di un datastore o modificare un profilo in base alle proprie esigenze.
+
+.Prima di iniziare
+È necessario aver registrato l'istanza del provider VASA con Virtual Storage Console per VMware vSphere.
+
+.A proposito di questa attività
+Dopo aver configurato un profilo, è possibile modificarlo in base alle esigenze.
+
+.Fasi
+. Nella pagina iniziale della console di storage virtuale (VSC), fare clic su *Storage Capability Profiles* (profili funzionalità di storage).
+. Creare un profilo o modificare un profilo esistente, come richiesto:
++
+[cols="1a,1a"]
+|===
+| Se si desidera... | Eseguire questa operazione... 
+
+
+ a| 
+Creare un profilo
+ a| 
+Fare clic su *image:../media/create-icon.gif[""]*.
+
+
+
+ a| 
+Modificare un profilo esistente
+ a| 
+Fare clic sul profilo che si desidera modificare dai profili elencati nella pagina Storage Capability Profiles.
+
+|===
++
+[NOTE]
+====
+Per visualizzare i valori associati a un profilo esistente, fare clic sul nome del profilo nella pagina Storage Capabilities Profile. IL provider VASA visualizza quindi la pagina Riepilogo del profilo. Non è possibile modificare alcun profilo di capacità storage esistente creato prima dell'appliance virtuale 9.6 per VSC, VASA Provider e SRA.
+
+====
+. Completare le pagine della procedura guidata *Create Storage Capability Profile* per configurare un profilo o modificare i valori per modificare un profilo esistente.
++
+La maggior parte dei campi di questa procedura guidata sono esplicativi. La seguente tabella descrive alcuni dei campi per i quali potrebbe essere necessaria una guida.
+
++
+[cols="1a,1a"]
+|===
+| Campo | Spiegazione 
+
+
+ a| 
+Identificazione di più profili
+ a| 
+È possibile utilizzare il campo *Descrizione* della scheda Nome e Descrizione per descrivere lo scopo del profilo di capacità dello storage. Fornire una buona descrizione è utile perché è consigliabile impostare profili diversi in base alle applicazioni in uso.
+
+Ad esempio, un'applicazione business-critical richiede un profilo con funzionalità che supportino performance più elevate, come ad esempio una piattaforma AFF. Un datastore utilizzato per il test o la formazione potrebbe utilizzare un profilo con una piattaforma FAS dalle performance inferiori e consentire tutte le funzionalità di efficienza dello storage e il tiering per controllare i costi.
+
+Se è stata attivata la modalità "`Linked`" per i server vCenter, è necessario selezionare il server vCenter per cui si sta creando il profilo di capacità storage.
+
+
+
+ a| 
+Piattaforma
+ a| 
+È possibile selezionare il sistema di storage per il tipo di piattaforma AFF o FAS. Le opzioni nelle schermate successive vengono aggiornate in base alla selezione del tipo di sistema di storage.
+
+
+
+ a| 
+Performance
+ a| 
+È possibile impostare le policy QoS tradizionali per il sistema storage utilizzando la scheda Performance (prestazioni).
+
+** Quando si seleziona *None* (Nessuno), viene applicata una policy QoS senza limiti (infinito) a un volume dati.
+** Quando si seleziona *QoS Policy Group*, viene applicata una policy QoS tradizionale a un volume.
++
+È possibile impostare il valore per *IOPS max* e *IOPS min* che consentono di utilizzare la funzionalità QoS. Se si seleziona Infinite IOPS, il campo Max IOPS viene disattivato. Quando viene applicata a un datastore tradizionale, viene creata una policy di QoS con il valore "`MAX IOPS`" e assegnata a un volume FlexVol. Se utilizzato con un datastore Vol, viene creata una policy QoS con valori IOPS max e IOPS min per ogni VVol dati.
+
++
+[NOTE]
+====
+*** È possibile applicare al volume FlexVol anche i valori massimi di IOPS e minimo IOPS per un datastore tradizionale.
+*** È necessario assicurarsi che le metriche delle performance non siano impostate separatamente a livello di macchina virtuale di storage, di aggregato o di volume FlexVol.
+
+
+====
+
+
+
+
+ a| 
+Attributi dello storage
+ a| 
+Gli attributi di storage che è possibile attivare in questa scheda dipendono dal tipo di storage selezionato nella scheda Personality.
+
+** Se si seleziona lo storage FAS, è possibile configurare la riserva di spazio (spessa o sottile), abilitare la deduplica, la compressione e la crittografia.
++
+L'attributo tiering è disattivato perché questo attributo non è applicabile allo storage FAS.
+
+** Se si seleziona lo storage AFF, è possibile attivare la crittografia e il tiering.
++
+Deduplica e compressione sono attivate per impostazione predefinita per lo storage AFF e non possono essere disattivate. La riserva di spazio è configurata come sottile e non può essere modificata in spessa (per l'efficienza degli aggregati e il tiering è necessario un sottile strato).
+
++
+L'attributo tiering consente l'utilizzo di volumi che fanno parte di un aggregato abilitato a FabricPool (supportato dal provider VASA per sistemi AFF con ONTAP 9.4 e versioni successive). È possibile configurare uno dei seguenti criteri per l'attributo tiering:
+
+** Any (qualsiasi): Consente l'utilizzo di questo profilo di funzionalità dello storage con qualsiasi volume FlexVol, indipendentemente dal fatto che venga utilizzato o meno Fabric Pool
+** None (Nessuno): Impedisce lo spostamento dei dati del volume nel Tier di capacità
+** Snapshot-only (solo snapshot): Sposta i blocchi di dati utente delle copie Snapshot del volume non associate al file system attivo nel Tier di capacità
+** Auto: Sposta i blocchi di dati cold user nelle copie Snapshot e nel file system attivo nel Tier di capacità
+
+
+|===
+. Rivedere le selezioni nella pagina *Riepilogo*, quindi fare clic su *OK*.
++
+Dopo aver creato un profilo, è possibile tornare alla pagina Storage Mapping (mappatura dello storage) per visualizzare i profili corrispondenti agli archivi dati.
+
+

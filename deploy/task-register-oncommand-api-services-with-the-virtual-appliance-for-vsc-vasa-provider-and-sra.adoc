@@ -1,0 +1,48 @@
+---
+permalink: deploy/task-register-oncommand-api-services-with-the-virtual-appliance-for-vsc-vasa-provider-and-sra.html 
+sidebar: sidebar 
+keywords: virtual, volume, datastores, registering, virtual, appliance, vsc, vasa, provider, sra, 
+summary: 'Se si utilizza ONTAP 9.6 o versioni precedenti, la dashboard di vVol consente di visualizzare i dettagli dei datastore e delle macchine virtuali di VMware Virtual Volumes (vVol) solo se si è registrati al provider VASA per ottenere i dati per i report di vVol VM e datastore.' 
+---
+= Registrati con l'appliance virtuale per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizza ONTAP 9.6 o versioni precedenti, la dashboard di vVol consente di visualizzare i dettagli dei datastore e delle macchine virtuali di VMware Virtual Volumes (vVol) solo se si è registrati al provider VASA per ottenere i dati per i report di vVol VM e datastore.
+
+.Prima di iniziare
+È necessario aver scaricato la versione 2.1 o successiva da .
+
+[NOTE]
+====
+La dashboard di vVol visualizza le metriche delle performance solo quando i datastore E le macchine virtuali DI SAN vVol sono configurati utilizzando ONTAP 9.3 o versione successiva.
+
+====
+.Fasi
+. Dalla pagina iniziale della console di storage virtuale (VSC), fare clic su *Impostazioni*.
+. Fare clic su *Manage Extension* (Gestisci estensione) nella scheda *Administrative Settings* (Impostazioni amministrative).
+. Utilizzare il dispositivo di scorrimento *Registra servizi API OnCommand* per attivare .
+. Immettere l'indirizzo IP, la porta di servizio e le credenziali per .
++
+È inoltre possibile utilizzare la finestra di dialogo *Manage VASA Provider Extensions* (Gestisci estensioni provider VASA) per le seguenti modifiche:
+
++
+** Per aggiornare la registrazione in caso di modifiche alle credenziali.
+** Per annullare la registrazione quando non è più necessaria la dashboard di vVol.
++
+Deselezionare la casella di controllo *Registra servizi API OnCommand* per rimuovere la registrazione per il provider VASA.
+
+
+
+. Fare clic su *Apply* (Applica).
++
+La dashboard di vVol visualizza le metriche per gli archivi dati DI ONTAP 9.6 o di SAN vVol precedenti solo dopo il completamento della registrazione di.
+
+
+
+*Informazioni correlate*
+
+https://mysupport.netapp.com/site/["Supporto NetApp"^]

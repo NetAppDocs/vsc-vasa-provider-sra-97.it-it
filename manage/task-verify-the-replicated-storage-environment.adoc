@@ -1,0 +1,30 @@
+---
+permalink: manage/task-verify-the-replicated-storage-environment.html 
+sidebar: sidebar 
+keywords: verifying, replicated, storage, systems, 
+summary: 'Dopo aver configurato Storage Replication Adapter (SRA), è necessario verificare che il sito protetto e il sito di ripristino siano associati correttamente. Il sistema di storage replicato deve essere rilevabile sia dal sito protetto che dal sito di ripristino.' 
+---
+= Verificare i sistemi storage replicati
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver configurato Storage Replication Adapter (SRA), è necessario verificare che il sito protetto e il sito di ripristino siano associati correttamente. Il sistema di storage replicato deve essere rilevabile sia dal sito protetto che dal sito di ripristino.
+
+.Prima di iniziare
+* È necessario aver configurato il sistema storage.
+* È necessario associare il sito protetto e il sito di ripristino utilizzando SRM Array Manager.
+* Prima di eseguire il test delle operazioni di failover e failover per SRA, è necessario aver abilitato la licenza FlexClone e la licenza SnapMirror.
+
+
+.Fasi
+. Accedere al server vCenter.
+. Accedere al menu:Site Recovery [Array Based Replication] (Ripristino sito [replica basata su array]).
+. Selezionare la SVM richiesta, quindi verificare i dettagli corrispondenti nelle *coppie di array*.
++
+I sistemi storage devono essere rilevati nel sito protetto e nel sito di ripristino con lo stato "`Enabled`".
+
+

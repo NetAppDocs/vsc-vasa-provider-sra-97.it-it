@@ -1,0 +1,61 @@
+---
+permalink: deploy/concept-installation-workflow-for-existing-users-of-vsc.html 
+sidebar: sidebar 
+keywords: deployment, workflow, existing, users, vsc, vasa, provider, sra, 
+summary: 'Le versioni 9.7 dell"appliance virtuale per VSC, VASA Provider e SRA supportano l"aggiornamento diretto alla versione più recente.' 
+---
+= Workflow di implementazione per gli utenti esistenti di VSC, provider VASA e SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Le versioni 9.7 dell'appliance virtuale per VSC, VASA Provider e SRA supportano l'aggiornamento diretto alla versione più recente.
+
+Le versioni precedenti di singole applicazioni come VSC, VASA Provider e SRA utilizzano un processo di aggiornamento diverso. Se nel programma di installazione è installato VSC, VASA Provider o SRA, eseguire le seguenti operazioni:
+
+. Implementa l'ultima release dell'appliance virtuale per VSC, VASA Provider e SRA.
+. Eseguire la migrazione dei dati di configurazione esistenti.
++
+I dati di configurazione includono le credenziali del sistema di storage e le preferenze presenti in `kaminoprefs.xml` e. `vscPreferences.xml` file.
+
+
+
+link:reference-configure-the-vsc-preferences-files.html["Configurare i file delle preferenze VSC"^]
+
+In molti casi, potrebbe non essere necessario migrare i dati di configurazione. Tuttavia, se i file delle preferenze sono stati personalizzati in precedenza, potrebbe essere necessario esaminarli e apportare modifiche simili all'appliance virtuale appena implementata. È possibile eseguire una delle seguenti operazioni:
+
+* Utilizzare https://mysupport.netapp.com/tools/index.html["Utility di importazione per SnapCenter e console di storage virtuale"^] Per migrare le credenziali del sistema storage da VSC 6.X e SRA 4.X alla nuova implementazione.
+* Aggiungere i sistemi storage all'appliance virtuale appena implementata e specificare le credenziali man mano che vengono aggiunte.
+
+
+Se si esegue l'aggiornamento dal provider VASA 6.X, è necessario annullare la registrazione del provider VASA prima di eseguire l'aggiornamento. Per ulteriori informazioni, consultare la documentazione relativa alla versione corrente.
+
+Se si esegue anche l'aggiornamento da SRA 4.0 o versioni precedenti:
+
+* Se si utilizza SRA 4.0P1, è necessario prima eseguire l'aggiornamento a SRA9.6 e solo in questo caso è possibile eseguire un aggiornamento in-place di SRA 9.6 alla versione più recente.
++
+link:task-upgrade-to-the-9-7-1-virtual-appliance-for-vsc-vasa-provider-and-sra.html["Effettua l'upgrade all'appliance virtuale 9.7.1 per VSC, VASA Provider e SRA"^]
+
+* Se si utilizza SRA 2.1 o 3.0, è necessario prima annotare i dettagli della configurazione del sito esistente.
++
+_Guida all'installazione e alla configurazione di Storage Replication Adapter 4.0 per ONTAP_ contiene le istruzioni dettagliate nella sezione "Panoramica sull'aggiornamento". Queste release SRA utilizzano anche il provider VASA, pertanto è necessario annullare la registrazione del provider VASA e implementare la versione più recente dell'appliance virtuale per VSC, VASA Provider e SRA. La versione precedente del server (`.ova`) può essere rimosso al termine dell'aggiornamento.
+
+
+
+Per qualsiasi aggiornamento SRA, il software SRA (l'adattatore sul server Site Recovery Manager, installato da `.msi` File) deve essere rimosso dal server Site Recovery Manager. È possibile utilizzare il pannello di controllo del sistema Windows per disinstallare il software e installare il software SRA più recente sul server SRA utilizzando `.msi` file.
+
+Se si dispone dell'implementazione del provider VASA, dopo l'aggiornamento dalla configurazione esistente, è necessario configurare le dimensioni della memoria per l'appliance virtuale in modo che siano 12 GB utilizzando `Edit Settings` opzione. È inoltre necessario modificare la prenotazione della memoria virtuale. La macchina virtuale deve essere spenta per modificare le dimensioni della memoria.
+
+Un aggiornamento diretto da qualsiasi release precedente alla 9.7 a 9.7P2 o successiva non è supportato dall'appliance virtuale per VSC, VASA Provider e SRA. Prima di eseguire l'aggiornamento a qualsiasi versione successiva, è necessario aggiornare la configurazione esistente alla versione 9.7 dell'appliance virtuale per VSC, VASA Provider e SRA.
+
+Se si intende implementare l'ultima versione dell'appliance virtuale, è necessario consultare l'argomento "`requisiti per l'implementazione dell'appliance virtuale per VSC, VASA Provider e SRA`". L'argomento "`aggiornamento alla versione 9.6 dell'appliance virtuale per VSC, VASA Provider e SRA`" contiene informazioni sull'esecuzione di un aggiornamento in-place.
+
+*Informazioni correlate*
+
+https://mysupport.netapp.com/tools/info/ECMLP2840096I.html?productID=62135&pcfContentID=ECMLP2840096["ToolChest NetApp: Utility di importazione NetApp per SnapCenter e console di storage virtuale"^]
+
+link:concept-requirements-for-deploying-the-virtual-appliance-for-vsc-vasa-provider-and-sra.html["Requisiti per l'implementazione dell'appliance virtuale per VSC, VASA Provider e SRA"^]
+
+link:task-upgrade-to-the-9-7-1-virtual-appliance-for-vsc-vasa-provider-and-sra.html["Effettua l'upgrade all'appliance virtuale 9.7.1 per VSC, VASA Provider e SRA"^]

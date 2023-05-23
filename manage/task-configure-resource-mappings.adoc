@@ -1,0 +1,47 @@
+---
+permalink: manage/task-configure-resource-mappings.html 
+sidebar: sidebar 
+keywords: configuring, resource, mappings, 
+summary: 'È necessario mappare le risorse sul sito protetto e sul sito di ripristino in modo che le macchine virtuali siano configurate per il failover in un gruppo di host o nell"altro.' 
+---
+= Configurare le mappature delle risorse
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario mappare le risorse sul sito protetto e sul sito di ripristino in modo che le macchine virtuali siano configurate per il failover in un gruppo di host o nell'altro.
+
+.Prima di iniziare
+È necessario aver collegato i siti protetti e di ripristino.
+
+.A proposito di questa attività
+++ ++
+
+[NOTE]
+====
+In Site Recovery Manager (SRM), le risorse possono essere pool di risorse, host ESXi o cluster vSphere.
+
+====
+.Fasi
+. Accedere a vCenter Server e fare clic su menu:Site Recovery[Sites].
+. Selezionare il sito protetto, quindi fare clic su *Gestisci*.
+. Nella scheda Manage (Gestisci), selezionare *Resource Mapping*.
+. Fare clic su image:../media/new-resource-mappings.gif[""] per creare una nuova mappatura delle risorse.
++
+Viene visualizzata la procedura guidata Create Resource Mapping.
+
+. Nella procedura guidata *Create Resource Mapping*, eseguire le seguenti operazioni:
++
+.. Selezionare *prepara automaticamente i mapping per la risorsa con i nomi corrispondenti* e fare clic su *Avanti*.
+.. Selezionare gli oggetti del data center richiesti per i siti protetti e di ripristino e fare clic su *Aggiungi mapping*.
+.. Fare clic su *Avanti* dopo aver creato correttamente le mappature.
+.. Selezionare l'oggetto utilizzato in precedenza per creare il mapping inverso, quindi fare clic su *fine*.
+
+
+
+
+.Risultati
+La pagina Resource Mappings (Mapping delle risorse) visualizza le risorse protette del sito e le risorse del sito di ripristino. È possibile seguire la stessa procedura per le altre reti del proprio ambiente.

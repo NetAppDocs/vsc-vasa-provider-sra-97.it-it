@@ -1,0 +1,258 @@
+---
+sidebar: sidebar 
+permalink: qsg.html 
+keywords: qsg, ontap tools for vmware vsphere, quick start guide, installing 
+summary: 'Fornisce una panoramica dei requisiti di implementazione e istruzioni dettagliate per l"implementazione dell"appliance virtuale per Virtual Storage Console, VASA Provider e Storage Replication Adapter per VMware vSphere.' 
+---
+= Avvio rapido
+:toc: macro
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:experimental: 
+:toc: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+:toc-position: content
+
+
+[role="lead"]
+Virtual Storage Console (VSC) per VMware vSphere è un singolo plug-in vCenter Server che viene fornito in bundle con le estensioni VASA Provider e Storage Replication Adapter (SRA). VSC è consigliato per tutti gli ambienti ONTAP vSphere in quanto configura le impostazioni degli host ESXi e fornisce lo storage ONTAP utilizzando le Best practice. Il provider VASA è necessario per il supporto dei volumi virtuali (vVol) e SRA funziona insieme a VMware Site Recovery Manager.
+
+
+
+== Preparazione per l'installazione
+
+Il plug-in viene implementato come appliance virtuale, riducendo il lavoro di installazione e registrazione di ciascun prodotto separatamente con vCenter Server.
+
+
+
+=== Requisiti di implementazione
+
+L'appliance virtuale per VSC, VASA Provider e SRA può essere utilizzata con Windows vCenter Server o con VMware vCenter Server Virtual Appliance (vCSA). È necessario implementare l'appliance virtuale per VSC, VASA Provider e SRA su un sistema ESXi e vSphere supportato.
+
+
+
+=== Requisiti di dimensionamento di spazio e host
+
+[cols="2*"]
+|===
+| Sistema | Requisiti minimi 
+
+
+ a| 
+Spazio
+ a| 
+* 2.1 GB per installazioni con thin provisioning
+* 54.0 GB per installazioni con thick provisioning
+
+
+
+
+ a| 
+Dimensionamento dell'host
+ a| 
+* Memoria consigliata: 12 GB
+* CPU consigliate: 2
+
+
+|===
+
+
+=== Requisiti di licenza
+
+[cols="2*"]
+|===
+| Licenza | Descrizione 
+
+
+ a| 
+SnapMirror
+ a| 
+(Facoltativo) necessario per eseguire operazioni di failover per SRA.
+
+
+
+| FlexClone  a| 
+(Facoltativo) necessario per eseguire operazioni di failover di test per SRA e per le operazioni vVol del provider VASA.
+
+|===
+
+
+=== Requisiti aggiuntivi
+
+[cols="2*"]
+|===
+| Requisiti aggiuntivi | Colonna Description (Descrizione) 
+
+
+ a| 
+9083
+ a| 
+Se attivata, il provider VASA e SRA utilizzano questa porta per comunicare con il server vCenter. Questa porta è necessaria anche per ottenere le impostazioni TCP/IP.
+
+
+
+ a| 
+443
+ a| 
+A seconda di come sono state configurate le credenziali, VMware vCenter Server e i sistemi storage sono in attesa di comunicazioni sicure su questa porta.
+
+
+
+ a| 
+8143
+ a| 
+VSC è in attesa di comunicazioni sicure su questa porta.
+
+
+
+ a| 
+7
+ a| 
+VSC invia una richiesta echo a ONTAP per verificare la raggiungibilità ed è necessaria solo quando si aggiunge un sistema storage e può essere disattivata in un secondo momento.
+
+|===
+[cols="2*"]
+|===
+| Storage, host e applicazioni | Requisiti di versione 
+
+
+ a| 
+ONTAP
+ a| 
+ONTAP 9.1, 9.3, 9.5, 9.6, 9.7.
+
+
+
+ a| 
+VMware vSphere, server vCenter, host ESXi, Site Recovery Manager (SRM), applicazioni plug-in e database
+ a| 
+Vedere lo strumento matrice di interoperabilità
+
+* https://imt.netapp.com/matrix/imt.jsp?components=97563;&solution=56&isHWU&src=IMT["Matrice di interoperabilità Tool: VSC 9.7.1"^]
+* https://imt.netapp.com/matrix/imt.jsp?components=97564;&solution=376&isHWU&src=IMT["Matrice di interoperabilità Tool: VASA Provider 9.7.1"^]
+* https://imt.netapp.com/matrix/imt.jsp?components=97565;&solution=576&isHWU&src=IMT["Matrice di interoperabilità Tool: SRA 9.7.1"^]
+
+
+|===
+
+
+=== Appliance virtuale per requisiti VSC, VASA Provider e SRA
+
+È necessario disporre di:
+
+* Configurazione e configurazione dell'ambiente vCenter Server.
+* Scaricato il `.ova` file.
+* Le credenziali di accesso per l'istanza di vCenter Server.
+* Disconnesso e chiuso tutte le sessioni del browser di vSphere Web Client ed eliminato la cache del browser per evitare problemi di cache del browser durante l'implementazione dell'appliance virtuale per VSC, VASA Provider e SRA.
+* Configurato il gateway predefinito per l'utilizzo da parte dell'appliance virtuale per rispondere ai ping ICMP.
+* Un nome host DNS valido per l'appliance virtuale.
+* Servizi API OnCommand scaricati e installati per ONTAP 9.6 o versioni precedenti se si desidera visualizzare la dashboard di vVol. Se si utilizza ONTAP 9.7, non è necessario registrare i servizi API di OnCommand con il provider VASA.
+
+
+
+
+=== Requisiti opzionali per SRA
+
+Se si sta implementando l'appliance virtuale per l'utilizzo con VMware Site Recovery Manager, è necessario disporre di:
+
+* Scaricato il `.msi` File per il plug-in SRA solo se si desidera configurare la soluzione di disaster recovery di Site Recovery Manager (SRM).
+* Scaricato il `.tar.gz` File per SRA se si utilizza l'appliance SRM.
+
+
+
+
+== Implementa l'appliance virtuale per VSC, VASA Provider e SRA
+
+. Scaricare il `.ova` dal https://mysupport.netapp.com/site/products/all/details/otv/downloads-tab["Sito di supporto NetApp"^] Su un sistema client vSphere per l'implementazione degli strumenti ONTAP.
++
+È necessario implementare `.ova` File sia sul sito di origine che su quello di destinazione se si sta implementando SRA.
+
+. Accedere a vSphere Web Client e selezionare menu:Home[host e cluster].
+. Fare clic con il pulsante destro del mouse sul data center desiderato, quindi fare clic su *Deploy OVF template* (implementa modello OVF).
+. È possibile immettere l'URL per `.ova` oppure accedere alla cartella in cui si trova `.ova` Il file viene salvato, quindi fare clic su *Avanti*.
+. Inserire i dettagli richiesti per completare l'implementazione.
++
+È possibile visualizzare lo stato di avanzamento della distribuzione dalla scheda *Tasks* e attendere il completamento della distribuzione.
+
+. Verificare che i servizi VSC, VASA Provider e SRA siano in esecuzione al termine dell'implementazione.
+
+
+
+
+=== Implementare SRA su SRM
+
+È possibile implementare SRA sul server Windows SRM o su 8.2 SRM Appliance.
+
+
+
+==== Installare SRA sul server SRM Windows
+
+. Scaricare il `.msi` Programma di installazione per il plug-in SRA dal NetApp Support Site.
+. Fare doppio clic sul scaricato `.msi` Programma di installazione del plug-in SRA e seguire le istruzioni visualizzate.
+. Inserire l'indirizzo IP e la password dell'appliance virtuale implementata per completare l'installazione del plug-in SRA sul server SRM.
+
+
+
+
+==== Caricare e configurare SRA sull'appliance SRM
+
+. Scaricare il `.tar.gz` dal https://mysupport.netapp.com/site/products/all/details/otv/downloads-tab["Sito di supporto NetApp"^].
+. Nella schermata SRM Appliance (appliance SRM), fare clic su menu:Storage Replication Adapter[New Adapter] (nuovo adattatore).
+. Caricare `.tar.gz` File su SRM.
+. Eseguire nuovamente la scansione degli adattatori per verificare che i dettagli siano aggiornati nella pagina SRM Storage Replication Adapter.
+. Accedere utilizzando l'account amministratore all'appliance SRM utilizzando il putty.
+. Passare all'utente root: `su root`
+. Nella posizione del log, immettere il comando per ottenere l'ID del docker utilizzato da SRA docker: `docker ps -l`
+. Accedere all'ID container: `docker exec -it -u srm <container id> sh`
+. Configurare SRM con l'indirizzo IP e la password degli strumenti ONTAP: `perl command.pl -I <va-IP> administrator <va-password>`Viene visualizzato un messaggio di conferma dell'avvenuta memorizzazione delle credenziali di storage.
+
+
+
+
+==== Aggiornare le credenziali SRA
+
+. Eliminare il contenuto della directory /srm/sra/conf usando:
++
+.. `cd /srm/sra/conf`
+.. `rm -rf *`
+
+
+. Eseguire il comando perl per configurare SRA con le nuove credenziali:
++
+.. `cd /srm/sra/`
+.. `perl command.pl -I <va-IP> administrator <va-password>`
+
+
+
+
+
+
+==== Abilitare il provider VASA e SRA
+
+. Accedere al client Web vSphere utilizzando l'indirizzo IP specificato durante l'implementazione.
+. Fare clic sull'icona *Virtual Storage Console*, immettere il nome utente e la password specificati durante l'implementazione, quindi fare clic su *Sign in* (Accedi).
+. Nel riquadro sinistro di OTV, menu:Impostazioni[Impostazioni amministrative > Gestisci funzionalità] e abilitare le funzionalità richieste.
++
+
+NOTE: IL provider VASA è attivato per impostazione predefinita. Se si desidera utilizzare la funzionalità di replica per gli archivi dati vVols, utilizzare il pulsante di commutazione *Enable vVols Replication* (attiva replica vVols).
+
+. Inserire l'indirizzo IP dell'appliance virtuale per VSC, VASA Provider e SRA e la password dell'amministratore, quindi fare clic su *Apply* (Applica).
++
+Per ulteriori informazioni sulla configurazione, l'aggiunta di sistemi storage e la configurazione del controllo degli accessi basato sui ruoli per gli oggetti vSphere, fare riferimento alla guida Virtual Storage Console, VASA Provider e Storage Replication Adapter for VMware vSphere Deployment and Setup Guide.
+
+
+
+
+
+== Dove trovare ulteriori informazioni
+
+* https://www.netapp.com/support-and-training/documentation/ontap-tools-for-vmware-vsphere-documentation/?&access=a["Virtual Storage Console, VASA Provider e Storage Replication Adapter per VMware vSphere Resources"^]
+* https://docs.netapp.com/vapp-97/index.jsp["Documentazione su Virtual Storage Console, VASA Provider e Storage Replication Adapter per VMware vSphere"^]
+* https://docs.vmware.com/en/Site-Recovery-Manager/8.2/com.vmware.srm.install_config.doc/GUID-B3A49FFF-E3B9-45E3-AD35-093D896596A0.html["VMware Site Recovery Manager 8.2"^]
+* https://docs.netapp.com/us-en/ontap/["Documentazione di ONTAP 9"^]
+

@@ -1,0 +1,36 @@
+---
+permalink: deploy/reference-product-level-privilege-required-by-vsc-for-vmware-vsphere.html 
+sidebar: sidebar 
+keywords: product-level, privilege, required, vsc, vmware, vsphere, 
+summary: 'Per accedere alla GUI di Virtual Storage Console per VMware vSphere, è necessario disporre del privilegio View specifico per VSC a livello di prodotto assegnato al livello di oggetto vSphere corretto. Se si effettua l"accesso senza questo privilegio, VSC visualizza un messaggio di errore quando si fa clic sull"icona NetApp e impedisce l"accesso a VSC.' 
+---
+= Privilegio a livello di prodotto richiesto da VSC per VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per accedere alla GUI di Virtual Storage Console per VMware vSphere, è necessario disporre del privilegio View specifico per VSC a livello di prodotto assegnato al livello di oggetto vSphere corretto. Se si effettua l'accesso senza questo privilegio, VSC visualizza un messaggio di errore quando si fa clic sull'icona NetApp e impedisce l'accesso a VSC.
+
+Le seguenti informazioni descrivono il privilegio View a livello di prodotto VSC:
+
+[cols="1a,1a,1a"]
+|===
+| Privilegio | Descrizione | Livello di assegnazione 
+
+
+ a| 
+Visualizza
+ a| 
+È possibile accedere alla GUI di VSC. Questo privilegio non consente di eseguire attività all'interno di VSC. Per eseguire qualsiasi attività VSC, è necessario disporre dei privilegi vCenter Server nativi e specifici di VSC corretti per tali attività.
+ a| 
+Il livello di assegnazione determina le parti dell'interfaccia utente che è possibile visualizzare.
+
+L'assegnazione del privilegio View all'oggetto root (cartella) consente di accedere a VSC facendo clic sull'icona NetApp.
+
+È possibile assegnare il privilegio View a un altro livello di oggetto vSphere; tuttavia, ciò limita i menu VSC che è possibile visualizzare e utilizzare.
+
+L'oggetto root è la posizione consigliata per assegnare qualsiasi autorizzazione contenente il privilegio View.
+
+|===

@@ -1,0 +1,59 @@
+---
+permalink: manage/reference-considerations-for-migrating-virtual-machines.html 
+sidebar: sidebar 
+keywords: considerations, for, migrating, or, cloning, virtual, machines, 
+summary: È necessario tenere presenti alcune considerazioni durante la migrazione delle macchine virtuali nel data center. 
+---
+= Considerazioni per la migrazione o la clonazione di macchine virtuali
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario tenere presenti alcune considerazioni durante la migrazione delle macchine virtuali nel data center.
+
+
+
+== Migrazione di macchine virtuali protette
+
+È possibile migrare le macchine virtuali protette in:
+
+* Stesso datastore vVol in un host ESXi diverso
+* Datastore vVol compatibile diverso nello stesso host ESXi
+* Datastore vVol compatibile diverso in un host ESXi diverso
+
+
+Se la macchina virtuale viene migrata su un volume FlexVol diverso, anche il relativo file di metadati viene aggiornato con le informazioni della macchina virtuale. Se una macchina virtuale viene migrata su un host ESXi diverso ma sullo stesso storage, il metadafile del volume FlexVol sottostante non verrà modificato.
+
+
+
+== Clonare macchine virtuali protette
+
+È possibile clonare le macchine virtuali protette nei seguenti modi:
+
+* Stesso container dello stesso volume FlexVol che utilizza un gruppo di replica
++
+Il file di metadati dello stesso volume FlexVol viene aggiornato con i dettagli della macchina virtuale clonata.
+
+* Stesso container di un volume FlexVol diverso che utilizza un gruppo di replica
++
+Il volume FlexVol in cui viene posizionata la macchina virtuale clonata, il file di metadati viene aggiornato con i dettagli della macchina virtuale clonata.
+
+* Datastore di vVol o container diverso
++
+Il volume FlexVol in cui viene posizionata la macchina virtuale clonata, il file di metadati viene aggiornato con i dettagli della macchina virtuale.
+
+
+
+Al momento VMware non supporta la macchina virtuale clonata in un modello di macchina virtuale.
+
+È supportato il clone di una macchina virtuale protetta.
+
+
+
+== Snapshot delle macchine virtuali
+
+Attualmente sono supportate solo le istantanee delle macchine virtuali senza memoria. Se la macchina virtuale dispone di Snapshot con memoria, la macchina virtuale non viene presa in considerazione per la protezione.
+
+Inoltre, non è possibile proteggere macchine virtuali non protette che dispongono di memoria Snapshot. Per questa release, si prevede di eliminare lo snapshot di memoria prima di attivare la protezione per la macchina virtuale.

@@ -1,0 +1,29 @@
+---
+permalink: manage/reference-failover-in-progress-status-is-reported-inappropriately-for-sra.html 
+sidebar: sidebar 
+keywords: incorrect, status, failover, in, Progress, is, reported, for, SRA, in, SRM, 
+summary: 'Stato errato "failover in corso" per SRA in SRM' 
+---
+= Stato errato "failover in corso" per SRA in SRM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Problema
+
+VMware Site Recovery Manager (SRM) visualizza lo stato del dispositivo come "`in Progress`" per il nuovo dispositivo SnapMirrored.
+
+
+
+== Causa
+
+Questo problema si verifica a causa della presenza di una voce con lo stesso nome del dispositivo appena creato in `/opt/netapp/vpserver/conf/devices.txt` file.
+
+
+
+== Azione correttiva
+
+È necessario eliminare manualmente le voci corrispondenti al dispositivo appena creato da entrambi i siti (sito A e sito B) situati in `/opt/netapp/vpserver/conf/devices.txt` ed eseguire nuovamente il rilevamento dei dispositivi. Al termine del rilevamento, i dispositivi visualizzano lo stato corretto.

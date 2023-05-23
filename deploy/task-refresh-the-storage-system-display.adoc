@@ -1,0 +1,49 @@
+---
+permalink: deploy/task-refresh-the-storage-system-display.html 
+sidebar: sidebar 
+keywords: refreshing, the, storage, system, display, 
+summary: 'È possibile utilizzare la funzione di aggiornamento fornita da Virtual Storage Console per VMware vSphere per aggiornare le informazioni sui sistemi storage e forzare Virtual Storage Console (VSC) a rilevare i sistemi storage.' 
+---
+= Aggiornare il display del sistema di storage
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la funzione di aggiornamento fornita da Virtual Storage Console per VMware vSphere per aggiornare le informazioni sui sistemi storage e forzare Virtual Storage Console (VSC) a rilevare i sistemi storage.
+
+.A proposito di questa attività
+L'opzione "`refresh`" è utile se sono state modificate le credenziali predefinite per i sistemi di storage dopo aver ricevuto un errore di autenticazione. È necessario eseguire sempre un'operazione di aggiornamento se sono state modificate le credenziali del sistema di storage dopo che il sistema ha segnalato un "`Authentication Failure Status`" (Stato errore di autenticazione). Durante l'operazione di aggiornamento, VSC tenta di connettersi al sistema di storage utilizzando le nuove credenziali.
+
+A seconda della configurazione del sistema, il completamento di questa attività può richiedere molto tempo.
+
+.Fasi
+. Nella pagina VMware vSphere Client *Home*, fare clic su *Storage Systems*.
+. Avviare l'aggiornamento:
++
+[cols="1a,1a"]
+|===
+| Se questa posizione è... | Fare clic su... 
+
+
+ a| 
+Virtual Storage Console
+ a| 
+Icona *RISCOPRI TUTTO*.
+
+
+
+ a| 
+Data center
+ a| 
+Fare clic con il pulsante destro del mouse sul data center, quindi scegliere menu:NetApp VSC[Update host and Storage Data] (Aggiorna dati host e storage NetApp).
+
+|===
+. Nella finestra di dialogo *Update host and Storage Data* (Aggiorna dati host e storage), fare clic su *OK*.
++
+Il rilevamento potrebbe richiedere alcuni minuti a seconda del numero di host e sistemi storage nel data center. Questa operazione di rilevamento funziona in background.
+
+. Fare clic su *OK* nella finestra di dialogo *Success*.
+

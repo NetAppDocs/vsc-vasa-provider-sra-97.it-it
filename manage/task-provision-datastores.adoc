@@ -1,0 +1,147 @@
+---
+permalink: manage/task-provision-datastores.html 
+sidebar: sidebar 
+keywords: provisioning, datastores, 
+summary: 'Il provisioning di un datastore crea un container logico per le macchine virtuali e i dischi delle macchine virtuali (VMDK). È possibile eseguire il provisioning di un datastore, quindi collegarlo a un singolo host, a tutti gli host di un cluster o a tutti gli host di un data center.' 
+---
+= Eseguire il provisioning degli archivi dati
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il provisioning di un datastore crea un container logico per le macchine virtuali e i dischi delle macchine virtuali (VMDK). È possibile eseguire il provisioning di un datastore, quindi collegarlo a un singolo host, a tutti gli host di un cluster o a tutti gli host di un data center.
+
+.Prima di iniziare
+* Per eseguire il provisioning di un datastore su una macchina virtuale collegata direttamente a Virtual Storage Console (VSC), è necessario aggiungere la macchina virtuale a VSC utilizzando un account utente con i privilegi appropriati, non l'account utente vsadmin predefinito o il ruolo vsadmin.
++
+È anche possibile eseguire il provisioning di un datastore aggiungendo un cluster.
+
+* Assicurarsi che i dettagli della subnet di tutte le reti a cui è connesso ESXi host siano inseriti in `kaminoprefs.xml`.
++
+Vedere la sezione "attivazione del montaggio del datastore su diverse subnet" nella _Guida all'installazione e all'implementazione di VSC 9.6_.
+
+* Se si utilizza NFS o iSCSI e la subnet è diversa tra gli host ESXi e il sistema di storage, le impostazioni NFS o iSCSI in `kaminoprefs` Il file delle preferenze deve includere le subnet mask host ESXi.
++
+Questo file di preferenze è applicabile anche alla creazione di datastore VVol. _Guida all'installazione e all'implementazione di Virtual Storage Console, VASA Provider e Storage Replication Adapter per la release 9.6_ contiene ulteriori informazioni sul file delle preferenze e sull'attivazione del montaggio del datastore su diverse subnet.
+
+* Se è stato attivato il provider VASA e si desidera specificare i profili di capacità dello storage per gli archivi dati NFS o VMFS, è necessario creare uno o più profili di capacità dello storage.
+* Per creare un datastore NFSv4.1, è necessario aver attivato NFSv4.1 a livello di SVM.
+
+
+.A proposito di questa attività
+L'opzione *Provision Datastore* consente di specificare un profilo di capacità dello storage per il datastore. I profili di capacità dello storage aiutano a specificare obiettivi di livello di servizio (SLO) coerenti e semplificano il processo di provisioning. È possibile specificare un profilo di capacità di storage solo se è stato attivato il provider VASA. L'appliance virtuale per VSC, VASA Provider e SRA supporta i seguenti protocolli:
+
+* NFSv3 e NFSv4.1
+* VMFS5 e VMFS6
+
+
+VSC può creare un datastore su un volume NFS o su un LUN:
+
+* Per un datastore NFS, VSC crea un volume NFS sul sistema di storage e aggiorna i criteri di esportazione.
+* Per un datastore VMFS, VSC crea un nuovo volume (o utilizza un volume esistente, se è stata selezionata tale opzione), quindi crea un LUN e un igroup.
+
+
+[NOTE]
+====
+VMware non supporta NFSv4.1 con cluster di datastore.
+
+====
+Se durante il provisioning non viene specificato un profilo di capacità dello storage, sarà possibile utilizzare la pagina Storage Mapping per mappare un datastore a un profilo di capacità dello storage.
+
+.Fasi
+. È possibile accedere alla procedura guidata di provisioning del datastore utilizzando una delle seguenti opzioni:
++
+[cols="1a,1a"]
+|===
+| Se si seleziona tra ... | Eseguire le seguenti operazioni... 
+
+
+ a| 
+*Pagina iniziale del client vSphere*
+ a| 
+.. Fare clic su *host e cluster*.
+.. Nel riquadro di navigazione, selezionare il data center su cui si desidera eseguire il provisioning del datastore.
+.. Per specificare gli host per il montaggio dell'archivio dati, passare alla fase successiva.
+
+
+
+
+ a| 
+*Home page della Virtual Storage Console*
+ a| 
+.. Fare clic su *Panoramica*.
+.. Fare clic sulla scheda *Guida introduttiva*.
+.. Fare clic sul pulsante *Provision*.
+.. Fare clic su *Browse* (Sfoglia) per selezionare la destinazione in cui eseguire il provisioning dell'archivio dati come indicato nella fase successiva.
+
+
+|===
+. Specificare gli host su cui si desidera montare l'archivio dati.
++
+[cols="1a,1a"]
+|===
+| Per rendere disponibile l'archivio dati per... | Eseguire questa operazione... 
+
+
+ a| 
+Tutti gli host di un data center
+ a| 
+Fare clic con il pulsante destro del mouse su un data center, quindi selezionare menu:NetApp VSC[Provision Datastore].
+
+
+
+ a| 
+Tutti gli host di un cluster
+ a| 
+Fare clic con il pulsante destro del mouse su un cluster host, quindi selezionare menu:NetApp VSC[Provision Datastore].
+
+
+
+ a| 
+Un singolo host
+ a| 
+Fare clic con il pulsante destro del mouse su un host e selezionare menu:NetApp VSC[Provision Datastore].
+
+|===
+. Compilare i campi nella finestra di dialogo *nuovo datastore* per creare il datastore.
++
+La maggior parte dei campi della finestra di dialogo sono esplicativi. La seguente tabella descrive alcuni dei campi per i quali potrebbe essere necessaria una guida.
+
++
+[cols="1a,1a"]
+|===
+| Sezione | Descrizione 
+
+
+ a| 
+Generale
+ a| 
+La sezione *General* della finestra di dialogo *New Datastore Provisioning* fornisce le opzioni per inserire la destinazione, il nome, la dimensione, il tipo e il protocollo per il nuovo datastore. È possibile selezionare il protocollo *NFS* o *VMFS* per configurare un datastore tradizionale. Il tipo di datastore VVol viene utilizzato per configurare un datastore VVol. Se il provider VASA è attivato, è anche possibile decidere se utilizzare i profili di capacità dello storage. L'opzione *Datastore cluster* è disponibile solo per i datastore tradizionali. Utilizzare l'opzione *Avanzate* per specificare il file system *VMFS5* o *VMFS6*.
+
+
+
+ a| 
+Sistema storage
+ a| 
+È possibile selezionare uno dei profili di capacità dello storage elencati se è stata selezionata l'opzione nella sezione *Generale*. I valori consigliati dal sistema di storage e dalla macchina virtuale di storage vengono popolati per maggiore facilità. Tuttavia, se necessario, è possibile modificare i valori.
+
+
+
+ a| 
+Attributi dello storage
+ a| 
+Per impostazione predefinita, VSC compila i valori consigliati per le opzioni *aggregati* e *volumi*. È possibile personalizzare i valori in base alle proprie esigenze. L'opzione *Space Reserve* disponibile nel menu *Advanced* (Avanzate) viene popolata per ottenere risultati ottimali.
+
+
+
+ a| 
+Riepilogo
+ a| 
+È possibile rivedere il riepilogo dei parametri specificati per il nuovo datastore.
+
+|===
+. Nella sezione *Riepilogo*, fare clic su *fine*.
+

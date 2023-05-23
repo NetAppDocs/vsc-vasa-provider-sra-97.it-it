@@ -1,0 +1,34 @@
+---
+permalink: deploy/concept-configure-your-storage-system-environment.html 
+sidebar: sidebar 
+keywords: configuring, virtual, storage, console, vmware, vsphere, storage, system, environment, 
+summary: 'Virtual Storage Console per VMware vSphere offre un unico meccanismo per rilevare i sistemi storage e impostare le credenziali dello storage. Le credenziali forniscono le autorizzazioni ONTAP necessarie per consentire agli utenti della console di storage virtuale (VSC) di eseguire le attività utilizzando i sistemi di storage.' 
+---
+= Configurare la Virtual Storage Console per l'ambiente del sistema di storage VMware vSphere
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Virtual Storage Console per VMware vSphere offre un unico meccanismo per rilevare i sistemi storage e impostare le credenziali dello storage. Le credenziali forniscono le autorizzazioni ONTAP necessarie per consentire agli utenti della console di storage virtuale (VSC) di eseguire le attività utilizzando i sistemi di storage.
+
+Prima che VSC possa visualizzare e gestire le risorse di storage, VSC deve rilevare i sistemi di storage. Nell'ambito del processo di rilevamento, è necessario fornire le credenziali ONTAP per i sistemi storage. Si tratta dei privilegi (o ruoli) associati alla coppia di nome utente e password assegnata a ciascun sistema di storage. Queste coppie di nome utente e password utilizzano il RBAC (Role-Based Access Control) di ONTAP e devono essere configurate da ONTAP. Non è possibile modificare queste credenziali da VSC. È possibile definire i ruoli RBAC di ONTAP utilizzando .
+
+[NOTE]
+====
+Se si effettua l'accesso come amministratore, si dispone automaticamente di tutti i privilegi per il sistema di storage in questione.
+
+====
+Quando si aggiunge un sistema di storage a VSC, è necessario fornire un indirizzo IP per il sistema di storage e la coppia di nome utente e password associata al sistema. È possibile impostare le credenziali predefinite che VSC utilizzerà durante il processo di rilevamento del sistema di storage oppure immettere manualmente le credenziali una volta rilevato il sistema di storage. I dettagli del sistema di storage aggiunto a VSC vengono inviati automaticamente alle estensioni attivate nella distribuzione. Non è necessario aggiungere manualmente lo storage al provider VASA e a Storage Replication Adapter (SRA). Sia VSC che SRA supportano l'aggiunta di credenziali a livello e livello di cluster. IL provider VASA supporta solo le credenziali a livello di cluster per l'aggiunta di sistemi storage.
+
+Se l'ambiente include più istanze di vCenter Server, quando si aggiunge un sistema di storage a VSC dalla pagina Storage Systems, la finestra di dialogo Add Storage System (Aggiungi sistema di storage) visualizza una finestra di vCenter Server in cui è possibile specificare a quale istanza di vCenter Server aggiungere il sistema di storage. Se si aggiunge un sistema storage facendo clic con il pulsante destro del mouse sul nome di un data center, non è possibile specificare un'istanza di vCenter Server perché il server è già associato a tale data center.
+
+Il rilevamento avviene in uno dei seguenti modi. In ogni caso, è necessario fornire le credenziali per qualsiasi sistema storage appena rilevato.
+
+* All'avvio del servizio VSC, VSC avvia il processo automatico di rilevamento in background.
+* È possibile fare clic sul pulsante *RISCOPRI tutto* nella pagina Storage Systems (sistemi storage) o su un host o un data center per selezionarlo dal menu *Actions* (menu:Actions[NetApp VSC > Update host and Storage Data] (azioni[NetApp VSC > Aggiorna dati host e storage). È inoltre possibile fare clic su *DISCOVER* nella scheda Getting Started (Guida introduttiva) della sezione Overview (Panoramica).
+
+
+Tutte le funzioni VSC richiedono autorizzazioni specifiche per eseguire le attività. È possibile limitare le operazioni che gli utenti possono eseguire in base alle credenziali associate al ruolo di ONTAP. Tutti gli utenti che hanno la stessa coppia di nome utente e password del sistema di storage condividono lo stesso set di credenziali del sistema di storage e possono eseguire le stesse operazioni.

@@ -1,0 +1,77 @@
+---
+permalink: manage/task-configure-array-manager.html 
+sidebar: sidebar 
+keywords: configuring, sra, using, array, manager, 
+summary: 'È possibile configurare Storage Replication Adapter (SRA) utilizzando la procedura guidata Array Manager di Site Recovery Manager (SRM) per abilitare le interazioni tra SRM e le macchine virtuali di storage (SVM).' 
+---
+= Configurare SRA utilizzando Array Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare Storage Replication Adapter (SRA) utilizzando la procedura guidata *Array Manager* di Site Recovery Manager (SRM) per abilitare le interazioni tra SRM e le macchine virtuali di storage (SVM).
+
+.Prima di iniziare
+* È necessario associare i siti protetti e i siti di ripristino in SRM.
+* È necessario aver configurato lo storage prima di configurare l'array manager.
+* È necessario aver configurato e replicato le relazioni di SnapMirror tra i siti protetti e i siti di ripristino.
+* È necessario aver abilitato le LIF di gestione SVM per abilitare la multi-tenancy.
+
+
+.A proposito di questa attività
+SRA supporta la gestione a livello di cluster e la gestione a livello di SVM. Se si aggiunge storage a livello di cluster, è possibile rilevare ed eseguire operazioni su tutte le SVM del cluster. Se si aggiunge storage a livello di SVM, è possibile gestire solo la SVM specifica.
+
+[NOTE]
+====
+VMware non supporta il protocollo NFS4.1 per SRM.
+
+====
+.Fasi
+. In SRM, fare clic su *Array Manager*, quindi su *Add Array Manager*.
+. Immettere le seguenti informazioni per descrivere l'array in SRM:
++
+.. Immettere un nome per identificare il gestore array nel campo *Display Name*.
+.. Nel campo *tipo SRA*, selezionare *scheda di replica storage NetApp per ONTAP*.
+.. Inserire le informazioni per la connessione al cluster o alla SVM:
++
+*** Se si sta effettuando la connessione a un cluster, inserire la LIF di gestione del cluster.
+*** Se ci si connette direttamente a una SVM, inserire l'indirizzo IP della LIF di gestione SVM.
++
+[NOTE]
+====
+Durante la configurazione dell'array manager, è necessario utilizzare la stessa connessione e le stesse credenziali per il sistema storage utilizzato per aggiungere il sistema storage nel menu *Storage Systems* di Virtual Storage Console. Ad esempio, se la configurazione dell'array manager è con ambito SVM, lo storage sotto VSC deve essere aggiunto a livello di SVM.
+
+====
+
+
+.. Se si sta effettuando la connessione a un cluster, inserire il nome della SVM nel campo *SVM name* (Nome SVM).
++
+È anche possibile lasciare vuoto questo campo.
+
+.. *Opzionale:* inserire i volumi da rilevare nel campo *Volume include list*.
++
+È possibile inserire il volume di origine nel sito protetto e il volume di destinazione replicato nel sito di ripristino. È possibile immettere il nome completo del volume o il nome parziale del volume.
+
++
+Ad esempio, se si desidera rilevare il volume _src_vol1_ che si trova in una relazione SnapMirror con il volume _dst_vol1_, è necessario specificare _src_vol1_ nel campo del sito protetto e _dst_vol1_ nel campo del sito di ripristino.
+
+.. *Opzionale:* inserire i volumi da escludere dal rilevamento nel campo *elenco esclusioni volume*.
++
+È possibile inserire il volume di origine nel sito protetto e il volume di destinazione replicato nel sito di ripristino. È possibile immettere il nome completo del volume o il nome parziale del volume.
+
++
+Ad esempio, se si desidera escludere il volume _src_vol1_ che si trova in una relazione SnapMirror con il volume _dst_vol1_, è necessario specificare _src_vol1_ nel campo del sito protetto e _dst_vol1_ nel campo del sito di ripristino.
+
+.. Inserire il nome utente dell'account a livello di cluster o dell'account a livello di SVM nel campo *Nome utente*.
+.. Inserire la password dell'account utente nel campo *Password*.
+
+
+. Fare clic su *Avanti*.
+. Verificare che l'array venga rilevato e visualizzato nella parte inferiore della finestra *Add Array Manager* (Aggiungi Array Manager).
+. Fare clic su *fine*.
+
+
+.Al termine
+È possibile seguire gli stessi passaggi per il sito di ripristino utilizzando gli indirizzi IP e le credenziali di gestione SVM appropriati. Nella schermata *Enable Array Pairs* della procedura guidata *Add Array Manager*, verificare che sia selezionata la coppia di array corretta e che sia visualizzata come pronta per essere abilitata.

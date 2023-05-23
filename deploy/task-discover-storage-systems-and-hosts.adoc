@@ -1,0 +1,44 @@
+---
+permalink: deploy/task-discover-storage-systems-and-hosts.html 
+sidebar: sidebar 
+keywords: discovering, storage, systems, hosts, 
+summary: 'Quando si esegue per la prima volta (VSC) in un client vSphere, VSC rileva gli host ESXi, le loro LUN ed esportazioni NFS e i sistemi storage NetApp che possiedono tali LUN ed esportazioni.' 
+---
+= Rilevamento di host e sistemi storage
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si esegue per la prima volta (VSC) in un client vSphere, VSC rileva gli host ESXi, le loro LUN ed esportazioni NFS e i sistemi storage NetApp che possiedono tali LUN ed esportazioni.
+
+.Prima di iniziare
+* Tutti gli host ESXi devono essere accesi e connessi.
+* Tutti i da rilevare devono essere in esecuzione e ciascun nodo del cluster deve avere almeno una LIF di dati configurata per il protocollo di storage in uso (NFS, iSCSI o FC).
+
+
+.A proposito di questa attività
+È possibile scoprire nuovi sistemi storage o aggiornare le informazioni sui sistemi storage esistenti per ottenere le informazioni più aggiornate sulla capacità e sulla configurazione in qualsiasi momento. È inoltre possibile modificare le credenziali utilizzate da VSC per accedere ai sistemi di storage.
+
+Durante il rilevamento dei sistemi storage, VSC raccoglie informazioni dagli host ESXi gestiti dall'istanza di vCenter Server.
+
+.Fasi
+. Dalla pagina iniziale del client vSphere, selezionare *host e cluster*.
+. Fare clic con il pulsante destro del mouse sul data center desiderato, quindi selezionare menu:NetApp VSC[Update host and Storage Data] (Aggiorna dati host e storage).
++
+VSC visualizza una finestra di dialogo di conferma che informa che questa operazione potrebbe richiedere molto tempo.
+
+. Fare clic su *OK*.
+. Selezionare i controller di storage rilevati con stato "`Authentication Failure`" (errore di autenticazione), quindi fare clic su menu:AZIONI[Modify] (Modifica).
+. Inserire le informazioni richieste nella finestra di dialogo *Modify Storage System* (Modifica sistema di storage).
+. Ripetere i passaggi 4 e 5 per tutti i controller storage con stato "`Authentication Failure`".
+
+
+.Al termine
+Al termine del processo di rilevamento, eseguire le seguenti operazioni:
+
+* Utilizzare VSC per configurare le impostazioni dell'host ESXi per gli host che visualizzano l'icona Alert (Avviso) nella colonna *Adapter Settings* (Impostazioni adattatore), nella colonna *MPIO Settings* (Impostazioni MPIO) o nella colonna *NFS Settings* (Impostazioni NFS).
+* Fornire le credenziali del sistema storage.
+

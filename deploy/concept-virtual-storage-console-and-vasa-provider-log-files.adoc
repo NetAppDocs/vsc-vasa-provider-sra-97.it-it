@@ -1,0 +1,37 @@
+---
+permalink: deploy/concept-virtual-storage-console-and-vasa-provider-log-files.html 
+sidebar: sidebar 
+keywords: virtual, storage, console, vasa, provider, log, files, 
+summary: È possibile controllare i file di log nella directory /opt/netapp/vscserver/log e nella directory /opt/netapp/vpserver/log quando si verificano errori. 
+---
+= Virtual Storage Console e file di log del provider VASA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile controllare i file di registro in `/opt/netapp/vscserver/log` e a. `/opt/netapp/vpserver/log` directory in caso di errori.
+
+I seguenti tre file di log possono essere utili per identificare i problemi:
+
+* `cxf.log`, Contenente informazioni sul traffico API in entrata e in uscita dal provider VASA
+* `kaminoPrefs.xml`, Contenente informazioni sulle impostazioni VSC
+* `vvolvp.log`, Contenente tutte le informazioni di registro relative al provider VASA
+
+
+Il menu di manutenzione dell'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) consente di impostare diversi livelli di log in base alle proprie esigenze. Sono disponibili i seguenti livelli di log:
+
+* Info
+* Debug
+* Errore
+* Traccia
+
+
+Quando si impostano i livelli di log, vengono aggiornati i seguenti file:
+
+* Server VSC: `kamino.log` e. `vvolvp.log`
+* Server del provider VASA: `vvolvp.log`, `error.log`, e. `netapp.log`
+
+
+Inoltre, la pagina dell'interfaccia della riga di comando web (CLI) del provider VASA contiene le chiamate API effettuate, gli errori restituiti e diversi contatori relativi alle performance. La pagina Web CLI si trova all'indirizzo `_https_://<IP_address_or_hostname\>:9083/stats`.

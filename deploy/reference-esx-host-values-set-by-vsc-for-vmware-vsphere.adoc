@@ -1,0 +1,124 @@
+---
+permalink: deploy/reference-esx-host-values-set-by-vsc-for-vmware-vsphere.html 
+sidebar: sidebar 
+keywords: esxi, host, values, set, using, virtual, storage, console, vmware, vsphere, 
+summary: 'È possibile impostare timeout e altri valori sugli host ESXi utilizzando Virtual Storage Console per VMware vSphere per garantire le migliori performance e il failover corretto. I valori impostati da Virtual Storage Console (VSC) si basano su test interni.' 
+---
+= Valori host ESXi impostati utilizzando Virtual Storage Console per VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile impostare timeout e altri valori sugli host ESXi utilizzando Virtual Storage Console per VMware vSphere per garantire le migliori performance e il failover corretto. I valori impostati da Virtual Storage Console (VSC) si basano su test interni.
+
+È possibile impostare i seguenti valori su un host ESXi:
+
+
+
+== Configurazione avanzata di ESXi
+
+* *VMFS3.HardwareAcceleratedLocking*
++
+Impostare questo valore su 1.
+
+* *VMFS3.EnableBlockDelete*
++
+Impostare questo valore su 0.
+
+
+
+
+
+== Impostazioni NFS
+
+* *Net.TcpipelHeapSize*
++
+Se si utilizza vSphere 6.0 o versione successiva, impostare questo valore su 32.
+
+* *Net.TcpipelHeapMax*
++
+Se si utilizza vSphere 6.0 o versione successiva, impostare questo valore su 1536.
+
+* *NFS.MaxVolumes*
++
+Se si utilizza vSphere 6.0 o versione successiva, impostare questo valore su 256.
+
+* *NFS41.MaxVolumes*
++
+Se si utilizza vSphere 6.0 o versione successiva, impostare questo valore su 256.
+
+* *NFS.MaxQueueDepth*
++
+Se si utilizza vSphere 6.0 o una versione successiva dell'host ESXi, impostare questo valore su 128 o superiore per evitare colli di bottiglia in coda.
+
++
+Per le versioni di vSphere precedenti alla 6.0, impostare questo valore su 64.
+
+* *NFS.HeartbeatMaxFailures*
++
+Impostare questo valore su 10 per tutte le configurazioni NFS.
+
+* *NFS.HeartbeatFrequency*
++
+Impostare questo valore su 12 per tutte le configurazioni NFS.
+
+* *NFS.HeartbeatTimeout*
++
+Impostare questo valore su 5 per tutte le configurazioni NFS.
+
+
+
+
+
+== Impostazioni FC/FCoE
+
+* *Criterio di selezione del percorso*
++
+Impostare questo valore su "`RR`" (round robin) quando si utilizzano percorsi FC con ALUA.
+
++
+Impostare questo valore su "`FIXED`" per tutte le altre configurazioni.
+
++
+L'impostazione di questo valore su "`RR`" aiuta a fornire il bilanciamento del carico in tutti i percorsi attivi/ottimizzati. Il valore "`FIXED`" viene utilizzato per le configurazioni precedenti, non ALUA e aiuta a prevenire l'i/o del proxy
+
+* *Disk.QFullSampleSize*
++
+Impostare questo valore su 32 per tutte le configurazioni. L'impostazione di questo valore aiuta a prevenire gli errori di i/O.
+
+* *Disk.QFullThreshold*
++
+Impostare questo valore su 8 per tutte le configurazioni. L'impostazione di questo valore aiuta a prevenire gli errori di i/O.
+
+* *Timeout HBA FC Emulex*
++
+Utilizzare il valore predefinito.
+
+* *Timeout HBA FC QLogic*
++
+Utilizzare il valore predefinito.
+
+
+
+
+
+== Impostazioni iSCSI
+
+* *Criterio di selezione del percorso*
++
+Impostare questo valore su "`RR`" per tutti i percorsi iSCSI.
+
++
+L'impostazione di questo valore su "`RR`" aiuta a fornire il bilanciamento del carico in tutti i percorsi attivi/ottimizzati.
+
+* *Disk.QFullSampleSize*
++
+Impostare questo valore su 32 per tutte le configurazioni. L'impostazione di questo valore aiuta a prevenire gli errori di i/O.
+
+* *Disk.QFullThreshold*
++
+Impostare questo valore su 8 per tutte le configurazioni. L'impostazione di questo valore aiuta a prevenire gli errori di i/O.
+
+

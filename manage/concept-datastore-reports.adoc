@@ -1,0 +1,78 @@
+---
+permalink: manage/concept-datastore-reports.html 
+sidebar: sidebar 
+keywords: datastore, reports, 
+summary: I report del datastore forniscono informazioni dettagliate sugli archivi dati tradizionali e sulle macchine virtuali create su questi datastore. 
+---
+= Report datastore
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I report del datastore forniscono informazioni dettagliate sugli archivi dati tradizionali e sulle macchine virtuali create su questi datastore.
+
+La dashboard tradizionale consente di esaminare e identificare potenziali problemi con gli archivi dati e le macchine virtuali nel server vCenter. È possibile visualizzare, ordinare ed esportare i report. I dati per i report datastore e macchine virtuali tradizionali sono forniti da vCenter Server.
+
+Il datastore fornisce i seguenti report predefiniti:
+
+* Report datastore
+* Report macchine virtuali
+
+
+
+
+== Report datastore
+
+Il menu Datastore Report fornisce informazioni sui seguenti parametri per gli archivi dati:
+
+* Nome dell'archivio dati
+* Tipo di datastore: NFS o VMFS
+* Spazio libero
+* Spazio utilizzato
+* Spazio totale
+* Percentuale di spazio utilizzato
+* Percentuale di spazio disponibile
+* IOPS
++
+Il report visualizza gli IOPS per l'archivio dati.
+
+* Latenza
++
+Il report visualizza le informazioni di latenza per l'archivio dati.
+
+
+
+È inoltre possibile verificare l'ora in cui è stato generato il report. Il menu Datastore Report (rapporto archivio dati) consente di organizzare il report in base alle proprie esigenze ed esportare il report organizzato utilizzando il pulsante *Export to CSV* (Esporta in CSV). I nomi dei datastore nel report sono collegamenti che consentono di accedere alla scheda Monitor del datastore selezionato, in cui è possibile visualizzare le metriche di performance del datastore.
+
+
+
+== Report macchine virtuali
+
+Il menu Virtual Machine Report fornisce le seguenti metriche delle performance per tutte le macchine virtuali che utilizzano datastore forniti da VSC per un vCenter Server selezionato:
+
+* Nome della macchina virtuale
+* Capacità impegnata
++
+Il report visualizza il valore della capacità impegnata per una macchina virtuale.
+
+* Uptime
++
+Il report mostra l'ora in cui la macchina virtuale è accesa ed è disponibile su un host ESXi.
+
+* Latenza
++
+Il report visualizza la latenza per le macchine virtuali in tutti gli archivi dati associati alle macchine virtuali.
+
+* Stato di alimentazione
++
+Il report indica se la macchina virtuale è accesa o spenta.
+
+* Host
++
+Il report visualizza i sistemi host su cui è disponibile la macchina virtuale.
+
+
+
+Ogni nome di macchina virtuale nel report è un collegamento alla scheda Monitor della macchina virtuale selezionata. È possibile ordinare il report della macchina virtuale in base alle proprie esigenze ed esportarlo in un `.CSV` e salvare il report sul sistema locale. L'indicazione dell'ora del report viene aggiunta anche al report salvato.

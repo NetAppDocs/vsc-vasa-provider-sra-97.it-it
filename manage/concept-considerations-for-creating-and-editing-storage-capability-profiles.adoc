@@ -1,0 +1,32 @@
+---
+permalink: manage/concept-considerations-for-creating-and-editing-storage-capability-profiles.html 
+sidebar: sidebar 
+keywords: considerations, for, creating, and, editing, storage, capability, profiles, 
+summary: È necessario conoscere le considerazioni per la creazione e la modifica dei profili delle funzionalità di storage. 
+---
+= Considerazioni per la creazione e la modifica dei profili di funzionalità dello storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario conoscere le considerazioni per la creazione e la modifica dei profili delle funzionalità di storage.
+
+* È possibile configurare gli IOPS min solo sui sistemi AFF.
+* È possibile configurare le metriche QoS a livello di datastore di un volume virtuale (Vol).
++
+Questa funzionalità offre una maggiore flessibilità nell'assegnazione di diverse metriche QoS per diversi VMDK della stessa macchina virtuale che viene fornita su un datastore virtuale.
+
+* È possibile configurare i profili delle funzionalità di storage per gli archivi dati FAS e AFF.
++
+Per i sistemi FAS, è possibile configurare la riserva di spazio in modo che sia spessa o sottile, ma per i sistemi AFF, la riserva di spazio può essere configurata solo su sottile.
+
+* È possibile utilizzare i profili di capacità dello storage per fornire la crittografia per i datastore.
+* Non è possibile modificare i profili di capacità dello storage esistenti dopo l'aggiornamento da una versione precedente dell'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) alla versione più recente dell'appliance virtuale per VSC, VASA Provider e SRA.
++
+I profili delle funzionalità di storage legacy vengono conservati per garantire la compatibilità con le versioni precedenti. Se i modelli predefiniti non sono in uso, durante l'aggiornamento alla versione più recente dell'appliance virtuale per VSC, VASA Provider e SRA, i modelli esistenti vengono sovrascritti per riflettere le nuove metriche di QoS correlate alle prestazioni dei profili di capacità dello storage.
+
+* Non è possibile modificare o utilizzare i profili delle funzionalità di storage legacy per eseguire il provisioning di nuovi datastore virtuali o policy di storage delle macchine virtuali.
+* Per tutti i nuovi datastore, è necessario utilizzare nuovi profili di funzionalità storage.
+

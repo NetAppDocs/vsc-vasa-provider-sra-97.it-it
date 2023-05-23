@@ -1,0 +1,68 @@
+---
+permalink: manage/task-monitor-vvols-datastores-and-virtual-machines-using-vvols-dashboard.html 
+sidebar: sidebar 
+keywords: monitoring, vvols, datastores, virtual, machines, using, the, vVol, dashboard, 
+summary: 'È possibile monitorare le performance e visualizzare i cinque principali datastore DI SAN VMware Virtual Volumes (vVol) nel vCenter Server in base ai parametri selezionati utilizzando la dashboard vVol dell"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA).' 
+---
+= Monitorate i datastore e le macchine virtuali di vVol utilizzando la dashboard di vVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile monitorare le performance e visualizzare i cinque principali datastore DI SAN VMware Virtual Volumes (vVol) nel vCenter Server in base ai parametri selezionati utilizzando la dashboard vVol dell'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA).
+
+.Prima di iniziare
+* Se si utilizza ONTAP 9.6 o versioni precedenti, è necessario attivare i servizi API di OnCommand 2.1 o versioni successive.
++
+Non è necessario registrare i servizi API OnCommand con il provider VASA per ottenere i dettagli del datastore SAN vVols o del report datastore SAN vVols VM per ONTAP 9.7.
+
++
+https://mysupport.netapp.com/site/["Supporto NetApp"^]
+
+* Si consiglia di utilizzare ONTAP 9.3 o versione successiva per il sistema storage.
+
+
+link:reference-verify-vvol-dashboard-data-requirements.html["Requisiti dei dati del dashboard vVol"]
+
+.A proposito di questa attività
+I dati IOPS forniti da ONTAP vengono arrotondati e visualizzati nella dashboard di vVol. Potrebbe esserci una differenza tra il valore IOPS effettivo fornito da ONTAP e il valore IOPS visualizzato nella dashboard di vVol.
+
+[NOTE]
+====
+* Se si registrano i servizi API di OnCommand per la prima volta, è possibile visualizzare tutti i dati delle metriche delle performance per gli archivi dati SAN vVol nella dashboard di vVol solo dopo 15 - 30 minuti.
+* I dati del dashboard di vVol vengono aggiornati periodicamente, a un intervallo di 10 minuti.
+* Se è stato aggiunto, modificato o eliminato un sistema di storage dall'istanza di vCenter Server, è possibile che non si notino modifiche nei dati nella dashboard di vVols per un certo periodo di tempo.
++
+Questo perché i servizi API di OnCommand richiedono tempo per ottenere metriche aggiornate da ONTAP.
+
+* Il valore IOPS totale visualizzato nel portlet *Overview* del dashboard vVol non è un valore cumulativo del valore IOPS di lettura e del valore IOPS di scrittura.
++
+Gli IOPS in lettura, gli IOPS in scrittura e gli IOPS totali sono metriche separate fornite dai servizi API di OnCommand. Se esiste una differenza tra il valore IOPS totale e il valore IOPS cumulativo (valore IOPS di lettura + valore IOPS di scrittura) fornito dai servizi API di OnCommand, la stessa differenza viene osservata nei valori IOPS sul dashboard di vVol.
+
+
+
+====
+.Fasi
+. Dalla home page del client vSphere, fare clic su *Virtual Storage Console*.
+. Selezionare il vCenter Server desiderato utilizzando il menu a discesa *vCenter server* per visualizzare gli archivi dati.
+. Fare clic su *vVol Dashboard*.
++
+Il portlet *Datastores* fornisce i seguenti dettagli:
+
++
+** Il numero di datastore vVol gestiti dal provider VASA nell'istanza di vCenter Server
+** I primi cinque datastore vVol in base all'utilizzo delle risorse e ai parametri delle performance è possibile modificare l'elenco dei datastore in base allo spazio utilizzato, agli IOPS o alla latenza e nell'ordine richiesto.
+
+
+. Visualizza i dettagli delle macchine virtuali utilizzando il portlet *macchine virtuali*.
++
+Il portlet *Virtual Machines* fornisce i seguenti dettagli:
+
++
+** Numero di macchine virtuali che utilizzano datastore ONTAP nel server vCenter
+** Le prime cinque macchine virtuali basate su IOPS, latenza, throughput, capacità impegnata, uptime, E spazio logico puoi personalizzare il modo in cui le prime cinque macchine virtuali sono elencate nella dashboard di vVol.
+
+
+

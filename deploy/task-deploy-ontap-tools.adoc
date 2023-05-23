@@ -1,0 +1,102 @@
+---
+permalink: deploy/task-deploy-ontap-tools.html 
+sidebar: sidebar 
+keywords: deploying, the, virtual, appliance, for vsc, vasa, provider, and sra, 
+summary: 'È necessario implementare l"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) nel proprio ambiente e specificare i parametri richiesti per poter utilizzare l"appliance.' 
+---
+= Implementa l'appliance virtuale per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario implementare l'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) nel proprio ambiente e specificare i parametri richiesti per poter utilizzare l'appliance.
+
+.Prima di iniziare
+* È necessario eseguire una release supportata di vCenter Server.
++
+[NOTE]
+====
+L'appliance virtuale per VSC, VASA Provider e SRA può essere registrata con un'implementazione Windows di vCenter Server o con un'implementazione VMware vCenter Server Virtual Appliance (vCSA).
+
+====
++
+https://mysupport.netapp.com/matrix/imt.jsp?components=97563;&solution=56&isHWU&src=IMT["Matrice di interoperabilità Tool: VSC 9.7"^]
+
+* È necessario aver configurato e configurato l'ambiente vCenter Server.
+* È necessario aver configurato un host ESXi per la macchina virtuale.
+* È necessario aver scaricato `.ova` file.
+* È necessario disporre delle credenziali di accesso dell'amministratore per l'istanza di vCenter Server.
+* È necessario disconnettersi e chiudere tutte le sessioni del browser di vSphere Client ed eliminare la cache del browser per evitare qualsiasi problema di cache del browser durante l'implementazione dell'appliance virtuale per VSC, VASA Provider e SRA.
++
+xref:task-clean-the-vsphere-cached-downloaded-plug-in-packages.adoc[Pulire i pacchetti di plug-in scaricati dalla cache di vSphere]
+
+* È necessario aver attivato il protocollo ICMP (Internet Control message Protocol).
++
+Se ICMP è disattivato, la configurazione iniziale dell'appliance virtuale per VSC, VASA Provider e SRA non riesce e VSC non può avviare i servizi VSC e VASA Provider dopo l'implementazione. Dopo l'implementazione, è necessario attivare manualmente i servizi VSC e VASA Provider.
+
+
+
+.A proposito di questa attività
+Se si sta implementando una nuova installazione dell'appliance virtuale per VSC, VASA Provider e SRA, il provider VASA viene attivato per impostazione predefinita. Tuttavia, in caso di aggiornamento da una versione precedente dell'appliance virtuale, lo stato del provider VASA viene mantenuto e potrebbe essere necessario attivare il provider VASA manualmente.
+
+link:task-enable-vasa-provider-for-configuring-virtual-datastores.html["Abilitare il provider VASA per la configurazione di datastore virtuali"]
+
+.Fasi
+. Accedere al client vSphere.
+. Selezionare menu:Home[host e cluster].
+. Fare clic con il pulsante destro del mouse sul data center richiesto, quindi fare clic su *Deploy OVA template* (implementa modello OVA).
+. Selezionare il metodo appropriato per fornire il file di implementazione per VSC, VASA Provider e SRA, quindi fare clic su *Avanti*.
++
+[cols="1a,1a"]
+|===
+| Posizione | Azione 
+
+
+ a| 
+URL
+ a| 
+Fornire l'URL per `.ova` File per l'appliance virtuale per VSC, VASA Provider e SRA.
+
+
+
+ a| 
+Cartella
+ a| 
+Selezionare `.ova` File per l'appliance virtuale per VSC, VASA Provider e SRA dalla posizione salvata.
+
+|===
+. Immettere i dettagli per personalizzare la procedura guidata di implementazione.
++
+Vedere link:reference-deploment-customization-requirements.html["Considerazioni sulla personalizzazione dell'implementazione"] per dettagli completi.
+
+. Esaminare i dati di configurazione, quindi fare clic su *Avanti* per terminare l'implementazione.
++
+Mentre si attende il completamento della distribuzione, è possibile visualizzare l'avanzamento della distribuzione dalla scheda *Tasks*.
+
+. Accendere la macchina virtuale dell'appliance, quindi aprire una console della macchina virtuale che esegue l'appliance virtuale.
+. Verificare che i servizi VSC, VASA Provider e SRA siano in esecuzione al termine dell'implementazione.
+. Se l'appliance virtuale per VSC, VASA Provider e SRA non è registrata con alcun vCenter Server, utilizzare `+https://appliance_ip:8143/Register.html+` Per registrare l'istanza di VSC.
+. Disconnettersi e accedere nuovamente a vSphere Client per visualizzare l'appliance virtuale implementata per VSC, VASA Provider e SRA.
++
+L'aggiornamento del plug-in nel client vSphere potrebbe richiedere alcuni minuti.
+
++
+[NOTE]
+====
+Se non è possibile visualizzare il plug-in anche dopo l'accesso, è necessario pulire la cache del client vSphere. xref:task-clean-the-vsphere-cached-downloaded-plug-in-packages.adoc[Pulire i pacchetti di plug-in scaricati dalla cache di vSphere]
+
+====
+
+
+.Al termine
+++ ++
+
+[NOTE]
+====
+Se si utilizza ONTAP 9.6 o versioni precedenti, per visualizzare la dashboard di vVol, è necessario scaricare e installare . Tuttavia, per ONTAP 9.7 non è necessario essere registrati presso il provider VASA.
+
+====
+xref:task-register-oncommand-api-services-with-the-virtual-appliance-for-vsc-vasa-provider-and-sra.adoc[Registrati con l'appliance virtuale per VSC, VASA Provider e SRA]

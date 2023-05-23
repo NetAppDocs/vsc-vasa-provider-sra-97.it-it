@@ -1,0 +1,51 @@
+---
+permalink: deploy/task-upgrade-storage-replication-adapter.html 
+sidebar: sidebar 
+keywords: sra, upgrade, upgrading, storage, replication, adapter, 
+summary: 'Dopo aver aggiornato l"appliance virtuale per VSC, VASA Provider e SRA o aver implementato la versione più recente dell"appliance virtuale, è necessario aggiornare Storage Replication Adapter (SRA).' 
+---
+= Aggiornare Storage Replication Adapter
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver aggiornato l'appliance virtuale per VSC, VASA Provider e SRA o aver implementato la versione più recente dell'appliance virtuale, è necessario aggiornare Storage Replication Adapter (SRA).
+
+.Fasi
+. È necessario eseguire l'aggiornamento alla scheda più recente utilizzando una delle seguenti procedure in base all'adattatore:
++
+[cols="1a,1a"]
+|===
+| *Per...* | Eseguire le seguenti operazioni... 
+
+
+ a| 
+*Windows*
+ a| 
+.. Accedere a SRM Windows Server.
+.. Disinstallare il programma di installazione esistente di SRA _.msi_ da SRM Server.
+.. Modificare il percorso di sistema in `C:\Program Files\VMware\VMware vCenter Site Recovery Manager\external\perl\c\bin`
+.. Fare doppio clic sul programma di installazione _.msi_ scaricato dal sito di supporto NetApp e seguire le istruzioni a schermo.
+.. Inserire l'indirizzo IP e la password dell'appliance virtuale implementata per VSC, VASA Provider e SRA.
+
+
+
+
+ a| 
+*Scheda di rete basata su appliance*
+ a| 
+.. Accedere alla pagina SRM Appliance Managementpage.
+.. Fare clic su *Storage Replication Adapter*, quindi su *Delete* (Elimina) per rimuovere l'SRA esistente.
+.. Fare clic sul menu:New Adapter[Browse] (nuovo adattatore[Sfoglia])
+.. Fare clic per selezionare il file di tarball SRA più recente scaricato dal sito di supporto NetApp, quindi fare clic su *Installa*.
+.. Configurare SRA sull'appliance SRM.
++
+xref:task-configure-sra-on-srm-appliance.adoc[Configurare SRA sull'appliance SRM]
+
+
+
+|===
+

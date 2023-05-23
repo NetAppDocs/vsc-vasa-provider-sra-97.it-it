@@ -1,0 +1,38 @@
+---
+permalink: deploy/reference-unable-to-install-sra-plug-in-due-to-winhttp-proxy-settings.html 
+sidebar: sidebar 
+keywords: unable, to, install, the, sra, plug-in, 
+summary: Impossibile installare il plug-in SRA 
+---
+= Impossibile installare il plug-in SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Problema
+
+Durante l'installazione del plug-in Storage Replication Adapter (SRA), il sistema si arresta nella schermata dell'indirizzo IP e della password del server e viene visualizzato il seguente messaggio di errore: "`le credenziali immesse non sono valide. Immettere un nome host e una password validi.`"
+
+
+
+== Causa
+
+L'errore potrebbe verificarsi a causa di uno dei seguenti motivi:
+
+* Sono state inserite credenziali di amministratore errate.
+* Le impostazioni del proxy WinHTTP non sono corrette.
+
+
+
+
+== Azione correttiva
+
+* Verificare le credenziali dell'amministratore.
+* L'articolo della Knowledge base contiene ulteriori informazioni sulla risoluzione dei problemi relativi alle impostazioni del proxy WinHTTP.
++
+https://kb.netapp.com/app/answers/answer_view/a_id/1005074["Risposta della Knowledge base di NetApp 1005074: L'installazione del plug-in del client SRA 4.0P1 (netapp_sra_4.0P1_ontap_64bit.msi) si blocca nella schermata dell'IP e della password del server"^]
+
+

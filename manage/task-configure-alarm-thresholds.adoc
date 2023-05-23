@@ -1,0 +1,41 @@
+---
+permalink: manage/task-configure-alarm-thresholds.html 
+sidebar: sidebar 
+keywords: configuring, alarm, thresholds, 
+summary: È possibile utilizzare VSC per impostare gli allarmi per notificare quando le soglie di volume e le soglie aggregate raggiungono i limiti impostati. 
+---
+= Configurare le soglie di allarme
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare VSC per impostare gli allarmi per notificare quando le soglie di volume e le soglie aggregate raggiungono i limiti impostati.
+
+.Fasi
+. Nella pagina iniziale della console di storage virtuale, fare clic su *Impostazioni*.
+. Fare clic su *Unified Appliance Settings*.
+. Specificare i valori percentuali per il campo *quasi pieno (%)* e il campo *pieno (%)* sia per le soglie di allarme del volume che per le soglie di allarme aggregate.
++
+Durante l'impostazione dei valori, è necessario tenere presenti le seguenti informazioni:
+
++
+** Facendo clic su *Reset* si ripristinano le soglie ai valori precedenti.
++
+Facendo clic su *Reset* (Ripristina), le soglie non vengono ripristinate ai valori predefiniti del 80% per "`quasi pieno`" e del 90% per "`pieno`".
+
+** Esistono due modi per impostare i valori:
++
+*** È possibile utilizzare le frecce su e giù accanto ai valori per regolare i valori di soglia.
+*** È possibile far scorrere le frecce sulla barra di traccia sotto i valori per regolare i valori di soglia.
+
+
+** Il valore minimo che è possibile impostare per il campo *Full threshold (%)* per volumi e aggregati è del 6%.
+
+
+. Dopo aver specificato i valori richiesti, fare clic su *Apply* (Applica).
++
+Fare clic su *Apply* (Applica) per l'allarme di volume e l'allarme aggregato.
+
+

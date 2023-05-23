@@ -1,0 +1,60 @@
+---
+permalink: deploy/reference-port-requirements-for-vsc.html 
+sidebar: sidebar 
+keywords: port, requirements, vsc 
+summary: 'Per impostazione predefinita, (VSC) utilizza le porte designate per abilitare la comunicazione tra i suoi componenti, che includono i sistemi storage e VMware vCenter Server. Se si dispone di firewall abilitati, assicurarsi che i firewall siano impostati in modo da consentire eccezioni.' 
+---
+= Requisiti delle porte per VSC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per impostazione predefinita, (VSC) utilizza le porte designate per abilitare la comunicazione tra i suoi componenti, che includono i sistemi storage e VMware vCenter Server. Se si dispone di firewall abilitati, assicurarsi che i firewall siano impostati in modo da consentire eccezioni.
+
+Per firewall diversi da Windows, è necessario concedere manualmente l'accesso a porte specifiche utilizzate da VSC. Se non si concede l'accesso a queste porte, viene visualizzato un messaggio di errore simile al seguente.
+
+_Impossibile comunicare con il server_
+
+VSC utilizza le seguenti porte TCP bidirezionali predefinite:
+
+[cols="1a,1a"]
+|===
+| Numero di porta predefinito | Descrizione 
+
+
+ a| 
+9083
+ a| 
+Quando questa opzione è attivata, il provider VASA e l'adattatore di replica dello storage (SRA) utilizzano questa porta per comunicare con il server vCenter. Questa porta è necessaria anche per ottenere le impostazioni TCP/IP.
+
+
+
+ a| 
+443
+ a| 
+A seconda di come sono state configurate le credenziali, VMware vCenter Server e i sistemi storage sono in attesa di comunicazioni sicure su questa porta.
+
+
+
+ a| 
+8143
+ a| 
+VSC è in attesa di comunicazioni sicure su questa porta.
+
+
+
+ a| 
+7
+ a| 
+VSC invia una richiesta echo a ONTAP per verificare la raggiungibilità ed è necessaria solo quando si aggiunge un sistema storage e può essere disattivata in un secondo momento.
+
+|===
+[NOTE]
+====
+Prima di implementare l'appliance virtuale per VSC, VASA Provider e SRA, è necessario aver attivato il protocollo ICMP (Internet Control message Protocol).
+
+Se ICMP è disattivato, la configurazione iniziale dell'appliance virtuale per VSC, VASA Provider e SRA non riesce e VSC non può avviare i servizi VSC e VASA Provider dopo l'implementazione. Dopo l'implementazione, è necessario attivare manualmente i servizi VSC e VASA Provider.
+
+====

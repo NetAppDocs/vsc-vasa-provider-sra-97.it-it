@@ -1,0 +1,22 @@
+---
+permalink: deploy/reference-configure-the-vsc-preferences-files.html 
+sidebar: sidebar 
+keywords: preferences, files, configuring, vsc, preferences, files, 
+summary: 'I file delle preferenze contengono impostazioni che controllano Virtual Storage Console per le operazioni di VMware vSphere. Nella maggior parte dei casi, non è necessario modificare le impostazioni di questi file. È utile sapere quali file delle preferenze (VSC) utilizzano.' 
+---
+= Configurare i file delle preferenze VSC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I file delle preferenze contengono impostazioni che controllano Virtual Storage Console per le operazioni di VMware vSphere. Nella maggior parte dei casi, non è necessario modificare le impostazioni di questi file. È utile sapere quali file delle preferenze (VSC) utilizzano.
+
+VSC dispone di diversi file di preferenze. Questi file includono chiavi di immissione e valori che determinano il modo in cui VSC esegue varie operazioni. Di seguito sono riportati alcuni dei file delle preferenze utilizzati da VSC:
+
+`/opt/netapp/vscserver/etc/kamino/kaminoprefs.xml`
+
+`/opt/netapp/vscserver/etc/vsc/vscPreferences.xml`
+
+In alcune situazioni potrebbe essere necessario modificare i file delle preferenze. Ad esempio, se si utilizza iSCSI o NFS e la subnet è diversa tra gli host ESXi e il sistema di storage, è necessario modificare i file delle preferenze. Se non si modificano le impostazioni nel file delle preferenze, il provisioning del datastore non riesce perché VSC non può montare il datastore.

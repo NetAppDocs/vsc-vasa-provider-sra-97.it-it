@@ -1,0 +1,82 @@
+---
+permalink: manage/task-add-storage-to-a-vvol-datastore.html 
+sidebar: sidebar 
+keywords: virtual, volume, datastores, adding, storage, to, a, vVols, datastore, 
+summary: 'È possibile aumentare lo storage disponibile utilizzando la procedura guidata Aggiungi storage per aggiungere volumi FlexVol a un datastore VMware Virtual Volumes (vVol) esistente.' 
+---
+= Aggiungere storage a un datastore vVols
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile aumentare lo storage disponibile utilizzando la procedura guidata *Aggiungi storage* per aggiungere volumi FlexVol a un datastore VMware Virtual Volumes (vVol) esistente.
+
+.A proposito di questa attività
+Quando si aggiunge un volume FlexVol, è anche possibile modificare il profilo delle funzionalità di storage associato a tale volume. È possibile utilizzare la funzione di generazione automatica del provider VASA per creare un nuovo profilo per il volume oppure assegnare uno dei profili esistenti al volume.
+
+[NOTE]
+====
+* Durante l'espansione di un datastore vVol con funzionalità di replica, non è possibile creare nuovi volumi FlexVol, ma è possibile selezionare solo volumi FlexVol preconfigurati dall'elenco esistente.
+* Quando si esegue la clonazione di una macchina virtuale protetta implementata nel datastore con la replica di vVol a causa di uno spazio insufficiente, è necessario aumentare le dimensioni del volume FlexVol.
+* Quando un datastore vVol viene creato su un cluster AFF, non è possibile espandere il datastore con un altro volume FlexVol che dispone di un profilo di funzionalità storage di generazione automatica.
++
+È possibile espandere il datastore vVols con volumi FlexVol che dispongono di profili di funzionalità storage pre-creati.
+
+
+
+====
+.Fasi
+. Nella pagina iniziale del client vSphere, fare clic su *host e cluster*.
+. Fare clic con il pulsante destro del mouse sul datastore vVol, quindi selezionare menu:NetApp VSC[Expand Storage of vVol Datastore].
+. Nella pagina *Espandi storage di vVol Datastore*, è possibile aggiungere un volume FlexVol esistente al datastore vVol oppure creare un nuovo volume FlexVol da aggiungere al database.
++
+[cols="1a,1a"]
+|===
+| Se si seleziona... | Eseguire le seguenti operazioni... 
+
+
+ a| 
+Selezionare i volumi
+ a| 
+.. Selezionare i volumi FlexVol che si desidera aggiungere al datastore vVols.
+.. Nella colonna *profili capacità di storage*, utilizzare l'elenco a discesa per creare un nuovo profilo basato sui volumi FlexVol oppure selezionare uno dei profili esistenti.
++
+La funzione di generazione automatica crea un profilo basato sulle funzionalità di storage associate a quel volume FlexVol. Ad esempio: Tipo di disco, alta disponibilità, disaster recovery, funzionalità di performance e deduplica.
+
+
+
+
+
+ a| 
+Creare nuovi volumi
+ a| 
+.. Immettere il nome, le dimensioni e il profilo di capacità di storage per FlexVol.
++
+Gli aggregati vengono selezionati dal sistema in base al profilo di capacità dello storage selezionato.
+
+.. Selezionare l'opzione *crescita automatica* e specificare le dimensioni massime.
+.. Fare clic su *ADD* (AGGIUNGI) per aggiungere il FlexVol all'elenco dei volumi.
+
+
+|===
++
+*Promemoria*: Tutti i volumi FlexVol in un datastore vVol devono provenire dalla stessa macchina virtuale di storage (SVM, precedentemente nota come Vserver).
+
++
+Dopo aver creato un volume FlexVol, è possibile modificarlo facendo clic sul pulsante *Modifica*. È anche possibile eliminarlo.
+
+. Selezionare un profilo di capacità storage predefinito da utilizzare durante la creazione della macchina virtuale, quindi fare clic su *Avanti* per esaminare il riepilogo dello storage aggiunto al datastore vVols.
+. Fare clic su *fine*.
++
+La procedura guidata aggiunge lo storage specificato al datastore vVols. Al termine dell'operazione, viene visualizzato un messaggio di conferma.
+
++
+[NOTE]
+====
+La procedura guidata *Expand Storage of vVol Datastore* gestisce automaticamente qualsiasi nuova scansione dello storage ESXi o qualsiasi altra operazione significativa richiesta. Poiché un datastore vVol è un'entità logica controllata dal provider VASA, l'aggiunta del volume FlexVol è l'unica operazione da eseguire per aumentare la capacità del container di storage.
+
+====
+

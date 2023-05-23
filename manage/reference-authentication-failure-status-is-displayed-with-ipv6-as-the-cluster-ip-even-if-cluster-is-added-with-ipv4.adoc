@@ -1,0 +1,38 @@
+---
+permalink: manage/reference-authentication-failure-status-is-displayed-with-ipv6-as-the-cluster-ip-even-if-cluster-is-added-with-ipv4.html 
+sidebar: sidebar 
+keywords: authentication, failure, for,, storage system, troubleshooting, error, 
+summary: 'L"aggiunta di un sistema storage con IPv4 comporta un errore di autenticazione con lo stato IPv6 nella griglia del sistema storage' 
+---
+= L'aggiunta di un sistema storage con IPv4 genera un errore di autenticazione con lo stato IPv6 nella griglia del sistema storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Problema
+
+La griglia del sistema di storage visualizza lo stato di errore di autenticazione con l'indirizzo IPv6 per un sistema di storage anche se il sistema di storage viene aggiunto con l'indirizzo IPv4.
+
+
+
+== Causa
+
+Se si dispone di un sistema storage dual stack con LIF IPv4 e IPv6 e si aggiunge un sistema storage con LIF IPv4, durante il processo di rilevamento periodico, VSC è in grado di rilevare anche LIF IPv6. Questa ricerca IPv6 non riesce con un errore di autenticazione in quanto IPv6 LIF non viene aggiunto esplicitamente. Questo errore non ha alcun impatto sulle operazioni eseguite per il sistema di storage.
+
+
+
+== Azione correttiva
+
+Eseguire le seguenti operazioni:
+
+. Nella home page di VSC, fare clic su *Storage Systems*.
+. Fare clic sul sistema di storage con stato sconosciuto e indirizzo IPv6.
+. Impostare l'indirizzo IP su IPv4 utilizzando le credenziali predefinite.
+. Fare clic su *Torna all'elenco*, quindi fare clic su *RISCOPRI TUTTO*.
++
+La voce IPv6 obsoleta dall'elenco dei sistemi di storage viene eliminata e il sistema di storage viene rilevato senza errori di autenticazione.
+
+

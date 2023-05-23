@@ -1,0 +1,31 @@
+---
+permalink: manage/reference-edit-vm-storage-policies-after-upgrade-throws-error-message.html 
+sidebar: sidebar 
+keywords: vasa, provider, issue, while, editing, VM, Storage, policies, after, upgrade, 
+summary: 'Dopo l"aggiornamento dalla versione 7.0 dell"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) alla versione più recente dell"appliance virtuale per VSC, VASA Provider, E SRA, se si tenta di modificare un criterio di storage delle macchine virtuali esistente prima di configurare nuovi profili di capacità dello storage, potrebbe essere visualizzato il seguente messaggio di errore: Di seguito sono riportati valori errati o mancanti.' 
+---
+= Problema durante la modifica delle policy di storage delle macchine virtuali dopo l'aggiornamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo l'aggiornamento dalla versione 7.0 dell'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) alla versione più recente dell'appliance virtuale per VSC, VASA Provider, E SRA, se si tenta di modificare un criterio di storage delle macchine virtuali esistente prima di configurare nuovi profili di capacità dello storage, potrebbe essere visualizzato il seguente messaggio di errore: `There are incorrect or missing values below`.
+
+
+
+== Causa
+
+Questo errore potrebbe essere visualizzato se non sono stati creati nuovi profili di capacità dello storage.
+
+
+
+== Azione correttiva
+
+Eseguire le seguenti operazioni:
+
+. Interrompere la modifica del criterio di storage delle macchine virtuali.
+. Creare un nuovo profilo di capacità dello storage.
+. Modificare il criterio di storage VM richiesto.
+

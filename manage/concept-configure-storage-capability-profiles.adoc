@@ -1,0 +1,14 @@
+---
+permalink: manage/concept-configure-storage-capability-profiles.html 
+sidebar: sidebar 
+keywords: creating, storage, capability, profiles, provider 
+summary: IL provider VASA per ONTAP consente di creare profili di funzionalità storage e di mapparli allo storage. In questo modo, è possibile mantenere la coerenza dello storage. È inoltre possibile utilizzare il provider VASA per verificare la conformità tra lo storage e i profili di funzionalità dello storage. 
+---
+= Creazione di profili di funzionalità storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+IL provider VASA per ONTAP consente di creare profili di funzionalità storage e di mapparli allo storage. In questo modo, è possibile mantenere la coerenza dello storage. È inoltre possibile utilizzare il provider VASA per verificare la conformità tra lo storage e i profili di funzionalità dello storage.

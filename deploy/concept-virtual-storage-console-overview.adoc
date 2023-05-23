@@ -1,0 +1,80 @@
+---
+permalink: deploy/concept-virtual-storage-console-overview.html 
+sidebar: sidebar 
+keywords: overview, virtual, appliance, vsc, vasa, provider, sra, 
+summary: 'L"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) offre una gestione end-to-end del ciclo di vita delle macchine virtuali negli ambienti VMware che utilizzano i sistemi storage NetApp. Semplifica lo storage e la gestione dei dati per gli ambienti VMware consentendo agli amministratori di gestire lo storage direttamente all"interno di vCenter Server.' 
+---
+= Panoramica dell'appliance virtuale per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) offre una gestione end-to-end del ciclo di vita delle macchine virtuali negli ambienti VMware che utilizzano i sistemi storage NetApp. Semplifica lo storage e la gestione dei dati per gli ambienti VMware consentendo agli amministratori di gestire lo storage direttamente all'interno di vCenter Server.
+
+Con vSphere 6.5, VMware ha introdotto un nuovo client basato su HTML5 chiamato vSphere Client. La versione 9.6 dell'appliance virtuale per VSC, VASA Provider e SRA supporta solo vSphere Client. L'appliance virtuale per VSC, VASA Provider e SRA si integra con vSphere Client e consente di utilizzare i servizi SSO (Single Sign-on). In un ambiente con più istanze di vCenter Server, ogni istanza di vCenter Server che si desidera gestire deve avere la propria istanza registrata di VSC.
+
+Ogni componente dell'appliance virtuale per VSC, VASA Provider e SRA offre funzionalità che consentono di gestire lo storage in modo più efficiente.
+
+
+
+== Virtual Storage Console (VSC)
+
+VSC consente di eseguire le seguenti attività:
+
+* Aggiunta di controller di storage, assegnazione di credenziali e impostazione di autorizzazioni per controller di storage a VSC che possono essere sfruttate sia da SRA che dal provider VASA
+* Eseguire il provisioning degli archivi dati
+* Monitorare le performance dei datastore e delle macchine virtuali nell'ambiente vCenter Server
+* Controllare l'accesso degli amministratori agli oggetti vCenter Server utilizzando RBAC (role-based access control) a due livelli:
++
+** Oggetti vSphere, come macchine virtuali e datastore
++
+Questi oggetti vengono gestiti utilizzando vCenter Server RBAC.
+
+** Storage ONTAP
++
+I sistemi storage vengono gestiti utilizzando ONTAP RBAC.
+
+
+
+* Visualizzare e aggiornare le impostazioni host degli host ESXi connessi allo storage
+
+
+Le operazioni di provisioning VSC traggono vantaggio dall'utilizzo del plug-in NFS per VMware VMware vStorage API per l'integrazione array (VAAI). Il plug-in NFS per VAAI è una libreria software che integra le librerie di dischi virtuali VMware installate sull'host ESXi. Il pacchetto VMware VAAI consente l'offload di determinate attività dagli host fisici all'array di storage. È possibile eseguire attività come il thin provisioning e l'accelerazione hardware a livello di array per ridurre il carico di lavoro sugli host ESXi. La funzione di offload delle copie e di riserva dello spazio migliorano le prestazioni delle operazioni VSC.
+
+Il plug-in NetApp NFS per VAAI non viene fornito con VSC. Tuttavia, è possibile scaricare il pacchetto di installazione del plug-in e ottenere le istruzioni per l'installazione del plug-in da .
+
+
+
+== Provider VASA
+
+IL provider VASA per ONTAP utilizza le API VMware vSphere per la consapevolezza dello storage (VASA) per inviare informazioni sullo storage utilizzato da VMware vSphere al server vCenter. L'appliance virtuale per VSC, VASA Provider e SRA, VASA Provider è integrata con VSC e VASA Provider consente di eseguire le seguenti attività:
+
+* Provisioning di datastore vVol (VMware Virtual Volumes)
+* Creare e utilizzare profili di funzionalità storage che definiscono diversi obiettivi di livello di servizio dello storage (SLO) per il proprio ambiente
+* Verificare la conformità tra i datastore e i profili di funzionalità dello storage
+* Impostare gli allarmi per avvisare l'utente quando volumi e aggregati stanno raggiungendo i limiti di soglia
+* Monitorare le performance dei dischi delle macchine virtuali (VMDK) e delle macchine virtuali create negli archivi dati vVols
+
+
+Se si utilizza ONTAP 9.6 o versioni precedenti, il provider VASA comunica con il server vCenter utilizzando le API VASA e comunica con ONTAP utilizzando le API chiamate ZAPI. Per visualizzare la dashboard vVol per ONTAP 9.6 e versioni precedenti, è necessario aver installato e registrato il server vCenter. Se si utilizza ONTAP 9.7, non è necessario essere registrati con il provider VASA per visualizzare la dashboard di vVol.
+
+[NOTE]
+====
+Per ONTAP 9.6 e versioni precedenti, il provider VASA richiede un'istanza dedicata dei servizi API di OnCommand. Un'istanza dei servizi API di OnCommand non può essere condivisa con più istanze del provider VASA.
+
+====
+
+
+== Storage Replication Adapter (SRA)
+
+Quando SRA viene attivato e utilizzato insieme a VMware Site Recovery Manager (SRM), è possibile ripristinare i datastore e le macchine virtuali di vCenter Server in caso di guasto. SRA consente di configurare siti protetti e siti di ripristino nell'ambiente per il disaster recovery in caso di guasto.
+
+*Informazioni correlate*
+
+https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62040["Documentazione NetApp: Servizi API OnCommand"^]
+
+http://mysupport.netapp.com/documentation/productlibrary/index.html?productID=61278["Documentazione NetApp: Plug-in NetApp NFS per VMware VAAI"^]
+
+https://mysupport.netapp.com/site/["Supporto NetApp"^]

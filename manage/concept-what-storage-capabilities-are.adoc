@@ -1,0 +1,30 @@
+---
+permalink: manage/concept-what-storage-capabilities-are.html 
+sidebar: sidebar 
+keywords: storage, capability, profiles, 
+summary: 'Una funzionalità di storage è un insieme di attributi del sistema di storage che identifica un livello specifico di performance dello storage, efficienza dello storage e altre funzionalità, come la crittografia per l"oggetto di storage associato alla funzionalità dello storage.' 
+---
+= Quali sono le funzionalità dello storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una funzionalità di storage è un insieme di attributi del sistema di storage che identifica un livello specifico di performance dello storage, efficienza dello storage e altre funzionalità, come la crittografia per l'oggetto di storage associato alla funzionalità dello storage.
+
+Per i datastore tradizionali, è possibile utilizzare un profilo di capacità dello storage per creare datastore in modo coerente con gli attributi comuni e assegnare loro i criteri QoS. Durante il provisioning, VSC visualizza cluster, SVM e aggregati che corrispondono al profilo di funzionalità dello storage. È possibile generare un profilo di capacità dello storage dagli archivi dati tradizionali esistenti utilizzando l'opzione *GLOBAL AUTO-GENERATE PROFILES* dal menu *Storage Mapping*. Una volta creato il profilo, è possibile utilizzare VSC per monitorare la conformità degli archivi dati con il profilo.
+
+Se utilizzata con datastore Vol, la procedura guidata di provisioning può utilizzare più profili di funzionalità storage per creare diversi volumi FlexVol nell'archivio dati. È possibile utilizzare il criterio di storage delle macchine virtuali per creare automaticamente i VVol per una macchina virtuale nei volumi FlexVol appropriati, come definito. Ad esempio, è possibile creare profili per classi di storage comuni (ad esempio per limiti di performance e altre funzionalità come crittografia o FabricPool). In seguito, è possibile creare policy di storage delle macchine virtuali in vCenter Server che rappresentino le classi di business delle macchine virtuali e collegarle al profilo di capacità dello storage appropriato per nome (ad esempio produzione, test, risorse umane).
+
+Se utilizzato con VVol, il profilo di capacità dello storage viene utilizzato anche per impostare le prestazioni dello storage per la singola macchina virtuale e posizionarlo sul volume FlexVol nel datastore vVol che soddisfa al meglio i requisiti di performance. È possibile specificare una policy QoS con IOPS minimi e/o massimi per le performance. È possibile utilizzare le policy predefinite quando si esegue il provisioning iniziale di una macchina virtuale o modificare la policy di storage della macchina virtuale in un secondo momento, se i requisiti di business cambiano.
+
+VCenter Server associa quindi la funzionalità di storage di un LUN o di un volume al datastore fornito su quel LUN o volume. In questo modo è possibile eseguire il provisioning di una macchina virtuale in un datastore che corrisponda al profilo di storage della macchina virtuale e garantire che tutti gli archivi dati di un cluster di datastore dispongano degli stessi livelli di servizio di storage.
+
+Con l'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA), è possibile configurare ogni datastore di volume virtuale (VVol) con un nuovo profilo di capacità dello storage che supporta il provisioning di macchine virtuali con requisiti IOPS variabili sullo stesso datastore vVol. Durante l'esecuzione del workflow di provisioning delle macchine virtuali con requisito IOPS, tutti gli archivi dati VVol sono elencati nell'elenco degli archivi dati compatibili.
+
+[NOTE]
+====
+Quando si tenta di eseguire il provisioning o la modifica di macchine virtuali per vCenter Server precedenti alla 6.5, nell'elenco degli archivi dati compatibili vengono elencati solo i datastore vVol che contengono profili di capacità dello storage con performance impostate su "`MAX_IOPS`". Gli archivi dati vVol rimanenti sono elencati nell'elenco degli archivi dati incompatibili. È possibile ignorare questa classificazione e selezionare qualsiasi datastore vVol dall'elenco datastore incompatibile per eseguire il provisioning o la modifica della macchina virtuale.
+
+====

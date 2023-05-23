@@ -1,0 +1,71 @@
+---
+permalink: manage/concept-configure-vvols-datastores.html 
+sidebar: sidebar 
+keywords: configuring, vvols, datastores, virtual, volumes 
+summary: 'È possibile utilizzare il provider VASA per ONTAP per creare e gestire i volumi virtuali VMware (vVol). È possibile eseguire il provisioning, modificare, montare ed eliminare un datastore vVols. È inoltre possibile aggiungere storage al datastore vVols o rimuovere lo storage dal datastore vVols. per offrire una maggiore flessibilità. È possibile eseguire il provisioning e gestire ogni macchina virtuale e il relativo VMDK.' 
+---
+= Configurare gli archivi dati vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare il provider VASA per ONTAP per creare e gestire i volumi virtuali VMware (vVol). È possibile eseguire il provisioning, modificare, montare ed eliminare un datastore vVols. È inoltre possibile aggiungere storage al datastore vVols o rimuovere lo storage dal datastore vVols. per offrire una maggiore flessibilità. È possibile eseguire il provisioning e gestire ogni macchina virtuale e il relativo VMDK.
+
+Un datastore vVol è costituito da uno o più volumi FlexVol all'interno di un container di storage (chiamato anche "`backup storage`"). Una macchina virtuale può essere distribuita su un datastore vVols o su più datastore vVols.
+
+Sebbene sia possibile creare un datastore vVol con più volumi FlexVol, tutti i volumi FlexVol all'interno del container di storage devono utilizzare lo stesso protocollo (NFS, iSCSI o FCP) e le stesse macchine virtuali di storage (SVM).
+
+Non è richiesta una conoscenza dettagliata dello storage sottostante. Ad esempio, non è necessario identificare un volume FlexVol specifico per contenere lo storage. Dopo aver aggiunto i volumi FlexVol al datastore vVols, il container di storage gestisce i requisiti di storage e impedisce qualsiasi situazione durante il provisioning delle macchine virtuali in cui il provisioning VMare viene eseguito su un volume di backup senza capacità.
+
+[NOTE]
+====
+È consigliabile includere più volumi FlexVol in un datastore vVol per ottenere performance e flessibilità. Poiché i volumi FlexVol presentano restrizioni del numero di LUN che limitano il numero di macchine virtuali, tra cui più volumi FlexVol è possibile memorizzare più macchine virtuali nel datastore vVol.
+
+====
+Nell'ambito del processo di installazione, è necessario specificare un profilo di capacità dello storage per il datastore vVols che si sta creando. È possibile selezionare uno o più profili di capacità storage del provider VASA per un datastore vVols. È inoltre possibile specificare un profilo di capacità storage predefinito per qualsiasi datastore vVols creato automaticamente in tale contenitore di storage.
+
+IL provider VASA crea diversi tipi di vVol durante il provisioning delle macchine virtuali o la creazione di VMDK, a seconda delle esigenze.
+
+* *Config*
++
+VMware vSphere utilizza questo datastore vVols per memorizzare le informazioni di configurazione.
+
++
+Nelle implementazioni SAN (a blocchi), lo storage è un LUN da 4 GB.
+
++
+In un'implementazione NFS, si tratta di una directory contenente file di configurazione delle macchine virtuali, come il file vmx, e puntatori ad altri datastore vVols.
+
+* *Dati*
++
+Questo vVol contiene informazioni sul sistema operativo e file utente.
+
++
+Nelle implementazioni SAN, si tratta di un LUN che corrisponde alle dimensioni del disco virtuale.
+
++
+In un'implementazione NFS, si tratta di un file delle dimensioni del disco virtuale.
+
+* *Sostituzione*
++
+Questo vVol viene creato quando la macchina virtuale viene accesa e viene cancellato quando la macchina virtuale viene spenta.
+
++
+Nelle implementazioni SAN, si tratta di un LUN che corrisponde alle dimensioni della memoria virtuale.
+
++
+In un'implementazione NFS, si tratta di un file che corrisponde alle dimensioni della memoria virtuale.
+
+* *Memoria*
++
+Questo vVol viene creato se si seleziona l'opzione Memory Snapshot (istantanee della memoria) durante la creazione dello snapshot della macchina virtuale.
+
++
+Nelle implementazioni SAN, si tratta di un LUN che corrisponde alle dimensioni della memoria virtuale.
+
++
+In un'implementazione NFS, si tratta di un file che corrisponde alle dimensioni della memoria virtuale.
+
+

@@ -1,0 +1,20 @@
+---
+permalink: deploy/concept-vmware-high-availability-for-vcenter-server.html 
+sidebar: sidebar 
+keywords: vsc, vmware, vsphere, ha, 
+summary: 'È possibile configurare l"ambiente vSphere in cui viene implementata l"appliance virtuale per la Virtual Storage Console (VSC), il provider VASA e l"adattatore di replica dello storage (SRA) per (ha). La funzionalità VMware ha offre protezione di failover da guasti hardware e guasti del sistema operativo negli ambienti virtuali.' 
+---
+= VMware vSphere ha
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare l'ambiente vSphere in cui viene implementata l'appliance virtuale per la Virtual Storage Console (VSC), il provider VASA e l'adattatore di replica dello storage (SRA) per (ha). La funzionalità VMware ha offre protezione di failover da guasti hardware e guasti del sistema operativo negli ambienti virtuali.
+
+La funzione VMware ha monitora le macchine virtuali per rilevare guasti al sistema operativo e all'hardware. Quando viene rilevato un errore, la funzione VMware ha riavvia le macchine virtuali sugli altri server fisici nel pool di risorse. L'intervento manuale non è necessario quando viene rilevato un guasto al server.
+
+La procedura di configurazione di VMware ha dipende dalla versione di vCenter Server in uso. Ad esempio, è possibile utilizzare il seguente collegamento di riferimento e selezionare la versione di vCenter Server richiesta per visualizzare la procedura di configurazione di VMware ha.
+
+https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.avail.doc/GUID-5432CA24-14F1-44E3-87FB-61D937831CF6.html["Documentazione VMware vSphere: Creazione e utilizzo di cluster ha vSphere"^]

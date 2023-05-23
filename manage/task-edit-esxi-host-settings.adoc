@@ -1,0 +1,64 @@
+---
+permalink: manage/task-edit-esxi-host-settings.html 
+sidebar: sidebar 
+keywords: editing, esxi, host, settings, for, vsc, vasa, provider, and, sra, 
+summary: 'È possibile utilizzare la dashboard dell"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) per modificare le impostazioni dell"host ESXi.' 
+---
+= Modificare le impostazioni degli host ESXi per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la dashboard dell'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) per modificare le impostazioni dell'host ESXi.
+
+.Prima di iniziare
+È necessario aver configurato un sistema host ESXi per l'istanza di vCenter Server.
+
+.A proposito di questa attività
+In caso di problemi con le impostazioni dell'host ESXi, il problema viene visualizzato nel portlet dei sistemi host ESXi della dashboard. Fare clic sul problema per visualizzare il nome host o l'indirizzo IP dell'host ESXi che ha il problema.
+
+.Fasi
+. Dalla pagina iniziale del client vSphere, fare clic su *Virtual Storage Console*.
+. Modificare le impostazioni dell'host ESXi.
++
+[cols="1a,1a"]
+|===
+| Se si desidera modificare le impostazioni dell'host ESXi da... | Eseguire questa operazione... 
+
+
+ a| 
+Problemi visualizzati
+ a| 
+.. Fare clic sul problema nel portlet sistemi host ESXi.
+.. Fare clic sui nomi host ESXi per i quali si desidera modificare le impostazioni.
+.. Fare clic con il pulsante destro del mouse sul nome host ESXi e scegliere menu:NetApp VSC[Set Recommended Values] (Imposta valori consigliati).
+.. Modificare le impostazioni richieste, quindi fare clic su *OK*.
+
+
+
+
+ a| 
+Pagina iniziale del client vSphere
+ a| 
+.. Fare clic su menu:Menu[host e cluster].
+.. Fare clic con il pulsante destro del mouse sull'host ESXi desiderato e selezionare menu:NetApp VSC[Set Recommended Value] (Imposta valore consigliato).
+.. Fare clic su *OK*.
+
+
+
+
+ a| 
+Portlet dei sistemi host ESXi
+ a| 
+.. Fare clic sulla scheda *Dashboard tradizionale* nella sezione Panoramica di VSC.
+.. Fare clic su *Edit ESXi host Settings* (Modifica impostazioni host ESXi).
+.. Selezionare il nome host ESXi nella scheda host settings and status (Impostazioni host e stato) per cui si desidera modificare le impostazioni, quindi fare clic su *NEXT* (AVANTI).
+.. Selezionare le impostazioni desiderate nella scheda Recommended host settings (Impostazioni host consigliate), quindi fare clic su *Next* (Avanti).
+.. Esaminare la selezione nella scheda Summary (Riepilogo), quindi fare clic su *FINISH* (FINE).
+
+
+|===
+

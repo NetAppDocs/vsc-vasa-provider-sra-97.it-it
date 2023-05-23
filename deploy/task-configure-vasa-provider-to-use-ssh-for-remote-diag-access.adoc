@@ -1,0 +1,41 @@
+---
+permalink: deploy/task-configure-vasa-provider-to-use-ssh-for-remote-diag-access.html 
+sidebar: sidebar 
+keywords: configuring, virtual, appliance, vsc, vasa, provider, sra, use, ssh, for, remote, diag, access, 
+summary: 'È possibile configurare l"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) per abilitare l"accesso SSH per l"utente DIAG.' 
+---
+= Configurare l'appliance virtuale per VSC, VASA Provider e SRA in modo che utilizzi SSH per l'accesso di DIAG remoto
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare l'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) per abilitare l'accesso SSH per l'utente DIAG.
+
+.Prima di iniziare
+L'estensione del provider VASA deve essere abilitata per l'istanza di vCenter Server.
+
+.A proposito di questa attività
+L'utilizzo di SSH per accedere all'utente di DIAG presenta le seguenti limitazioni:
+
+* È consentito un solo accesso per ogni attivazione di SSH.
+* L'accesso SSH all'utente di DIAG viene disattivato quando si verifica una delle seguenti condizioni:
++
+** Il tempo scade.
++
+La sessione di accesso rimane valida solo fino alla mezzanotte del giorno successivo.
+
+** Si accede nuovamente come utente di DIAG utilizzando SSH.
+
+
+
+
+.Fasi
+. Dal server vCenter, aprire una console per il provider VASA.
+. Accedere come utente principale.
+. Invio `4` Per selezionare *Support and Diagnostics* (supporto e diagnostica).
+. Invio `3` Per selezionare *Enable remote Diagnostics access* (Abilita accesso remoto alla diagnostica).
+. Invio `y` Nella finestra di dialogo *Confirmation* (Conferma) per abilitare l'accesso remoto alla diagnostica.
+. Inserire una password per l'accesso remoto alla diagnostica.
+

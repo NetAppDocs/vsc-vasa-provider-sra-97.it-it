@@ -1,0 +1,62 @@
+---
+permalink: deploy/concept-standard-roles-packaged-with-virtual-appliance-for-vsc-vp-and-sra.html 
+sidebar: sidebar 
+keywords: standard, roles, packaged, virtual, appliance, vsc, vasa, provider, sra, 
+summary: 'Per semplificare l"utilizzo dei privilegi di vCenter Server e del RBAC (role-based access control), (VSC) fornisce ruoli VSC standard che consentono di eseguire le principali attività VSC. Esiste anche un ruolo di sola lettura che consente di visualizzare le informazioni VSC, ma non di eseguire alcuna attività.' 
+---
+= Ruoli standard in bundle con l'appliance virtuale per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per semplificare l'utilizzo dei privilegi di vCenter Server e del RBAC (role-based access control), (VSC) fornisce ruoli VSC standard che consentono di eseguire le principali attività VSC. Esiste anche un ruolo di sola lettura che consente di visualizzare le informazioni VSC, ma non di eseguire alcuna attività.
+
+I ruoli VSC standard dispongono sia dei privilegi specifici di VSC che dei privilegi nativi di vCenter Server necessari per eseguire le attività VSC. Inoltre, i ruoli sono configurati in modo da disporre dei privilegi richiesti per tutte le versioni supportate di vCenter Server.
+
+In qualità di amministratore, è possibile assegnare questi ruoli agli utenti, in base alle esigenze.
+
+[NOTE]
+====
+Quando si aggiorna VSC alla versione più recente, i ruoli standard vengono automaticamente aggiornati per funzionare con la nuova versione di VSC.
+
+====
+È possibile visualizzare i ruoli standard VSC facendo clic su *ruoli* nella pagina iniziale del client vSphere.
+
+I ruoli forniti da VSC consentono di eseguire le seguenti attività:
+
+[cols="1a,1a"]
+|===
+| Ruolo | Descrizione 
+
+
+ a| 
+Amministratore di VSC
+ a| 
+Fornisce tutti i privilegi nativi di vCenter Server e i privilegi specifici di VSC necessari per eseguire tutte le attività di VSC.
+
+
+
+ a| 
+VSC di sola lettura
+ a| 
+Fornisce l'accesso in sola lettura a VSC.
+
+Questi utenti non possono eseguire alcuna azione VSC controllata dall'accesso.
+
+
+
+ a| 
+Provisioning VSC
+ a| 
+Fornisce tutti i privilegi nativi di vCenter Server e i privilegi specifici di VSC necessari per il provisioning dello storage.
+
+È possibile eseguire le seguenti operazioni:
+
+* Creare nuovi datastore
+* Distruggere i datastore
+* Visualizza informazioni sui profili delle funzionalità di storage
+
+
+|===

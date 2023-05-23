@@ -1,0 +1,16 @@
+---
+permalink: manage/concept-manage-disaster-recovery-setup-using-srm.html 
+sidebar: sidebar 
+keywords: managing, disaster, recovery, setup, by, using, site, recovery, manager, 
+summary: 'È possibile creare e gestire la configurazione del disaster recovery nel server vCenter utilizzando Site Recovery Manager (SRM) insieme a Site Recovery Manager (SRM) di VMware.' 
+---
+= Gestire la configurazione del disaster recovery utilizzando Site Recovery Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile creare e gestire la configurazione del disaster recovery nel server vCenter utilizzando Site Recovery Manager (SRM) insieme a Site Recovery Manager (SRM) di VMware.
+
+Questa versione di VASA Provider è ora integrata con le funzionalità di Storage Repliaction Adapter (SRA). Se nel data center sono stati configurati datastore vVols, per il ripristino dei datastore vVols non è necessario installare SRA separatamente per il disaster recovery. In Site Recovery Manager (SRM), è necessario associare i siti protetti e di ripristino. Una volta eseguita l'associazione del sito, la parte successiva della configurazione SRM prevede la configurazione di una coppia di array che consente a SRM di comunicare con il sistema storage per rilevare i dispositivi e la replica del dispositivo. Prima di poter configurare la coppia di array, è necessario creare una coppia di siti in SRM.

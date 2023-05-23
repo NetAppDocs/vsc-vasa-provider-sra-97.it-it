@@ -1,0 +1,29 @@
+---
+permalink: manage/reference-datastore-inaccessible-when-volume-status-is-changed-to-offline.html 
+sidebar: sidebar 
+keywords: datastore, inaccessible, when, volume, status, is, changed, to, offline, 
+summary: Datastore non accessibile quando lo stato del volume viene modificato in offline 
+---
+= Datastore non accessibile quando lo stato del volume viene modificato in offline
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+
+
+== Problema
+
+Quando un volume di un datastore viene reso offline, il datastore non è accessibile. Anche se si porta il volume online, VSC non riesce a rilevare il datastore. Nel client vSphere, se si fa clic con il pulsante destro del mouse sull'archivio dati, non sono disponibili azioni VSC.
+
+
+
+== Causa
+
+Quando il volume viene reso offline dal cluster, il volume viene prima dismontato e quindi reso offline o limitato. Il percorso di giunzione viene rimosso quando il volume viene reso offline e il datastore diventa inaccessibile. Se il volume viene reso online, il percorso di giunzione non è disponibile e non è montato su per impostazione predefinita. Questo è il comportamento di ONTAP.
+
+
+
+== Azione correttiva
+
+Il volume dovrebbe essere online e quindi montato manualmente con lo stesso percorso di giunzione di prima. È possibile eseguire il rilevamento dello storage per verificare che il datastore venga rilevato e che siano disponibili azioni per il datastore.

@@ -1,0 +1,62 @@
+---
+permalink: manage/task-configure-protection-groups.html 
+sidebar: sidebar 
+keywords: configuring, protection, groups, 
+summary: È necessario creare gruppi di protezione per proteggere un gruppo di macchine virtuali sul sito protetto. 
+---
+= Configurare i gruppi di protezione
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario creare gruppi di protezione per proteggere un gruppo di macchine virtuali sul sito protetto.
+
+.Prima di iniziare
+Assicurarsi che i siti di origine e di destinazione siano configurati per:
+
+* Stessa versione di SRM installata
+* Datastore vVols configurato con replica abilitata e datastore montato
+* Profili di capacità dello storage simili
+* Policy di storage VM simili con funzionalità di replica che devono essere mappate in SRM
+* Macchine virtuali
+* Siti di ripristino e protezione associati
+* Gli archivi dati di origine e di destinazione devono essere montati sui rispettivi siti
+
+
+.Fasi
+. Accedere a vCenter Server, quindi fare clic su menu:Site Recovery[Protection Groups] (Menu:Ripristino sito[gruppi di protezione]).
+. Nel riquadro *Protection Groups* (gruppi di protezione), fare clic su *New* (nuovo).
+. Specificare un nome e una descrizione per il gruppo di protezione, la direzione, quindi fare clic su *AVANTI*.
+. Nel campo *Type*, selezionare una delle seguenti opzioni:
++
+[cols="1a,1a"]
+|===
+| Per... | Digitare l'opzione del campo... 
+
+
+ a| 
+*Datastore tradizionale*
+ a| 
+Gruppi di datastore (replica basata su array)
+
+
+
+ a| 
+*Datastore vVols*
+ a| 
+Volumi virtuali (replica vVol)
+
+|===
++
+Il dominio degli errori non è altro che SVM con replica abilitata. Vengono visualizzate le SVM che hanno implementato solo il peering e che non presentano problemi.
+
+. Nella scheda *Replication groups* (gruppi di replica), selezionare la coppia di array abilitati o i gruppi di replica che hanno la macchina virtuale configurata, quindi fare clic su *NEXT* (AVANTI).
++
+Tutte le macchine virtuali del gruppo di replica vengono aggiunte al gruppo di protezione.
+
+. Selezionare il piano di ripristino esistente o crearne uno nuovo facendo clic su *Aggiungi al nuovo piano di ripristino*.
+. Nella scheda *Pronto per il completamento*, esaminare i dettagli del gruppo di protezione creato, quindi fare clic su *fine*.
+

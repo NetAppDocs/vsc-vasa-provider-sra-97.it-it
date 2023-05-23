@@ -1,0 +1,46 @@
+---
+permalink: deploy/concept-ontap-role-based-access-control-feature-for-virtual-appliance.html 
+sidebar: sidebar 
+keywords: ontap, role-based, access, control, virtual, appliance, vsc, vasa, provider, sra, 
+summary: 'Il RBAC (Role-Based Access Control) di ONTAP consente di controllare l"accesso a specifici sistemi storage e le azioni che un utente può eseguire su tali sistemi storage. Nella console di storage virtuale per VMware vSphere, ONTAP RBAC lavora con vCenter Server RBAC per determinare quali attività possono essere eseguite da un utente specifico sugli oggetti di un sistema storage specifico.' 
+---
+= Controllo degli accessi basato sul ruolo di ONTAP per l'appliance virtuale per VSC, provider VASA e SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il RBAC (Role-Based Access Control) di ONTAP consente di controllare l'accesso a specifici sistemi storage e le azioni che un utente può eseguire su tali sistemi storage. Nella console di storage virtuale per VMware vSphere, ONTAP RBAC lavora con vCenter Server RBAC per determinare quali attività possono essere eseguite da un utente specifico sugli oggetti di un sistema storage specifico.
+
+VSC utilizza le credenziali (nome utente e password) impostate in VSC per autenticare ciascun sistema storage e determinare quali operazioni storage possono essere eseguite su tale sistema. VSC utilizza un set di credenziali per ciascun sistema storage. Queste credenziali determinano quali attività VSC possono essere eseguite su quel sistema di storage; in altre parole, le credenziali sono per VSC, non per un singolo utente VSC.
+
+ONTAP RBAC si applica solo all'accesso ai sistemi storage e all'esecuzione di task VSC correlati allo storage, come il provisioning di macchine virtuali. Se non si dispone dei privilegi RBAC ONTAP appropriati per uno specifico sistema di storage, non è possibile eseguire attività su un oggetto vSphere ospitato su tale sistema di storage. È possibile utilizzare ONTAP RBAC insieme ai privilegi specifici di VSC per controllare quali attività di VSC possono essere eseguite da un utente:
+
+* Monitoraggio e configurazione degli oggetti storage o vCenter Server che risiedono su un sistema storage
+* Provisioning di oggetti vSphere residenti su un sistema storage
+
+
+L'utilizzo di ONTAP RBAC con i privilegi specifici di VSC offre un livello di sicurezza orientato allo storage che l'amministratore dello storage può gestire. Di conseguenza, si dispone di un controllo degli accessi più dettagliato rispetto a quello supportato da solo da ONTAP RBAC o da solo da vCenter Server RBAC. Ad esempio, con vCenter Server RBAC, è possibile consentire a vCenterUserB di eseguire il provisioning di un datastore sullo storage, impedendo al contempo a vCenterUserA di eseguire il provisioning dei datastore. Se le credenziali del sistema di storage per un sistema di storage specifico non supportano la creazione di storage, né vCenterUserB né vCenterUserA possono eseguire il provisioning di un datastore su tale sistema di storage.
+
+Quando si avvia un'attività VSC, VSC verifica innanzitutto se si dispone dell'autorizzazione vCenter Server corretta per tale attività. Se l'autorizzazione vCenter Server non è sufficiente per consentire l'esecuzione dell'attività, VSC non deve controllare i privilegi ONTAP per il sistema di storage in quanto non è stato superato il controllo di protezione iniziale di vCenter Server. Di conseguenza, non è possibile accedere al sistema di storage.
+
+Se l'autorizzazione del server vCenter è sufficiente, VSC verifica i privilegi RBAC di ONTAP (il proprio ruolo ONTAP) associati alle credenziali del sistema di storage (nome utente e password) Per determinare se si dispone di privilegi sufficienti per eseguire le operazioni di storage richieste dall'attività VSC sul sistema di storage in questione. Se si dispone dei privilegi ONTAP corretti, è possibile accedere al sistema di storage ed eseguire l'attività VSC. I ruoli ONTAP determinano le attività VSC che è possibile eseguire sul sistema di storage.
+
+A ciascun sistema storage è associato un set di privilegi ONTAP.
+
+L'utilizzo di ONTAP RBAC e vCenter Server RBAC offre i seguenti vantaggi:
+
+* Sicurezza
++
+L'amministratore può controllare quali utenti possono eseguire le attività a livello di oggetto vCenter Server e a livello di sistema di storage.
+
+* Informazioni di audit
++
+In molti casi, VSC fornisce un audit trail sul sistema storage che consente di tenere traccia degli eventi all'utente di vCenter Server che ha eseguito le modifiche dello storage.
+
+* Usabilità
++
+È possibile conservare tutte le credenziali del controller in un'unica posizione.
+
+

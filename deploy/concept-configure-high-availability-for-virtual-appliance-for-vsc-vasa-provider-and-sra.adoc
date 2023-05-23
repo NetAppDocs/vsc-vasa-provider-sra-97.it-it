@@ -1,0 +1,32 @@
+---
+permalink: deploy/concept-configure-high-availability-for-virtual-appliance-for-vsc-vasa-provider-and-sra.html 
+sidebar: sidebar 
+keywords: configuring, high, availability, virtual, appliance, vsc, vasa, provider, sra, 
+summary: 'L"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) supporta una configurazione (ha) per fornire funzionalità ininterrotte di VSC, VASA Provider e SRA in caso di guasto.' 
+---
+= Configurare l'alta disponibilità per l'appliance virtuale per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) supporta una configurazione (ha) per fornire funzionalità ininterrotte di VSC, VASA Provider e SRA in caso di guasto.
+
+L'appliance virtuale per VSC, VASA Provider e SRA si affida alle funzionalità VMware vSphere (ha) e vSphere fault tolerance (FT) per fornire . La soluzione (HA) offre un rapido ripristino in caso di interruzioni causate da:
+
+* Errore host
+* Errore di rete
+* Errore della macchina virtuale (errore del sistema operativo guest)
+* Arresto anomalo dell'applicazione (VSC, VASA Provider e SRA)
+
+
+Non è richiesta alcuna configurazione aggiuntiva sull'appliance virtuale per fornire . Solo gli host vCenter Server e ESXi devono essere configurati con la funzionalità VMware vSphere ha o vSphere FT in base ai requisiti. Sia ha che FT richiedono host in cluster insieme allo storage condiviso. FT presenta requisiti e limitazioni aggiuntivi.
+
+Oltre alla soluzione VMware vSphere ha e alla soluzione vSphere FT, l'appliance virtuale consente di mantenere sempre in esecuzione i servizi VSC, VASA Provider e SRA. Il processo watchdog dell'appliance virtuale monitora periodicamente tutti e tre i servizi e li riavvia automaticamente quando viene rilevato un qualsiasi tipo di errore. In questo modo si evitano gli errori delle applicazioni.
+
+[NOTE]
+====
+VCenter ha non è supportato dall'appliance virtuale per VSC, VASA Provider e SRA.
+
+====

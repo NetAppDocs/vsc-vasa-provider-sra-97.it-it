@@ -1,0 +1,74 @@
+---
+permalink: deploy/task-upgrade-to-the-9-7-1-virtual-appliance-for-vsc-vasa-provider-and-sra.html 
+sidebar: sidebar 
+keywords: virtual, storage, console, storage, replication, adapter, upgrading, to, the, 9.7.1, virtual, appliance, for, vsc, vasa, provider, sra, 
+summary: 'È possibile eseguire un aggiornamento diretto alla versione 9.7.1 dell"appliance virtuale per VSC, VASA Provider e SRA dalla configurazione 9.7 esistente seguendo le istruzioni fornite qui.' 
+---
+= Effettua l'upgrade all'appliance virtuale 9.7.1 per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eseguire un aggiornamento diretto alla versione 9.7.1 dell'appliance virtuale per VSC, VASA Provider e SRA dalla configurazione 9.7 esistente seguendo le istruzioni fornite qui.
+
+.Prima di iniziare
+* È necessario aver scaricato `.iso` File per la versione 9.7.1 dell'appliance virtuale per VSC, VASA Provider e SRA.
+* È necessario riservare almeno 12 GB di RAM per l'appliance virtuale affinché VSC, VASA Provider e SRA funzionino in modo ottimale dopo l'aggiornamento.
+* È necessario pulire la cache del browser del client vSphere.
++
+xref:task-clean-the-vsphere-cached-downloaded-plug-in-packages.adoc[Pulire i pacchetti di plug-in scaricati dalla cache di vSphere]
+
+
+
+.A proposito di questa attività
+Lo stato del provider VASA dall'implementazione esistente viene mantenuto dopo l'aggiornamento. Dopo l'aggiornamento, attivare o disattivare manualmente il provider VASA in base alle proprie esigenze. Tuttavia, è meglio abilitare il provider VASA anche se i volumi virtuali VMware (vVol) non sono in uso, in quanto abilita i profili di funzionalità dello storage per il provisioning tradizionale del datastore e gli allarmi dello storage.
+
+[NOTE]
+====
+Un aggiornamento diretto da qualsiasi release precedente alla 9.7 a 9.7P2 o successiva non è supportato dall'appliance virtuale per VSC, VASA Provider e SRA. Prima di eseguire l'aggiornamento a qualsiasi versione successiva, è necessario aggiornare la configurazione esistente alla versione 9.7 dell'appliance virtuale per VSC, VASA Provider e SRA. Quando si esegue l'aggiornamento alla versione 9.7.1 dell'appliance virtuale per VSC, VASA Provider e SRA e si desidera utilizzare la replica vVol, sarà necessario configurare un altro vCenter Server con l'appliance virtuale con Site Recovery Manager (SRM) installato.
+
+====
+.Fasi
+. Montare il scaricato `.iso` file sull'appliance virtuale:
++
+.. Fare clic su menu:Edit Settings [DVD/CD-ROM Drive] (Modifica impostazioni [unità DVD/CD-ROM]).
+.. Selezionare *Datastore ISO* file dall'elenco a discesa.
+.. Individuare e selezionare il file scaricato `.iso` Quindi selezionare la casella di controllo *Connetti all'accensione*.
+
+
+. Accedere alla scheda *Riepilogo* dell'appliance virtuale implementata.
+. Fare clic su *image:../media/launch-maintenance-console.gif[""]* per avviare la console di manutenzione.
+. Al prompt "`Main Menu`", immettere l'opzione `2` Per *Configurazione di sistema*, quindi immettere l'opzione `8` Per *Upgrade*.
++
+Al termine dell'aggiornamento, l'appliance virtuale viene riavviata. L'appliance virtuale per VSC, VASA Provider e SRA viene registrata su vCenter Server con lo stesso indirizzo IP di prima dell'aggiornamento.
+
+. Se si desidera che l'appliance virtuale per VSC, VASA Provider e SRA sia registrata con vCenter Server con l'indirizzo IPv6, eseguire le seguenti operazioni:
++
+.. Annullare la registrazione dell'appliance virtuale per VSC, VASA Provider e SRA.
+.. Registrare l'indirizzo IPv6 dell'appliance virtuale per VSC, VASA Provider e SRA su vCenter Server utilizzando la pagina *Register*.
+.. Rigenerare i certificati VSC e VASA Provider dopo la registrazione.
+
+
++
+[NOTE]
+====
+IPv6 è supportato solo con vCenter Server 6.7 e versioni successive.
+
+====
+. Disconnettersi e accedere nuovamente a vSphere Client per visualizzare l'appliance virtuale implementata per VSC, VASA Provider e SRA.
++
+.. Disconnettersi dal client Web vSphere o dal client vSphere esistente e chiudere la finestra.
+.. Accedere al client vSphere.
++
+L'aggiornamento del plug-in nel client vSphere potrebbe richiedere alcuni minuti.
+
+
+
+
+
+*Informazioni correlate*
+
+xref:task-enable-vasa-provider-for-configuring-virtual-datastores.adoc[Abilitare il provider VASA per la configurazione di datastore virtuali]

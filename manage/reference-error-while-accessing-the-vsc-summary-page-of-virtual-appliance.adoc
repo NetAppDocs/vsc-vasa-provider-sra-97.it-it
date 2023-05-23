@@ -1,0 +1,26 @@
+---
+permalink: manage/reference-error-while-accessing-the-vsc-summary-page-of-virtual-appliance.html 
+sidebar: sidebar 
+keywords: error, while, accessing, the, vsc, summary, page, of, virtual, appliance, 
+summary: 'Il messaggio di errore /opt/netapp/vscserver/etc/vsc/performance.json (nessun file o directory) potrebbe essere visualizzato quando si tenta di accedere alla pagina Riepilogo VSC dopo aver implementato l"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA).' 
+---
+= Errore durante l'accesso alla pagina Riepilogo VSC dell'appliance virtuale
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il messaggio di errore `/opt/netapp/vscserver/etc/vsc/performance.json (No such file or directory)` Potrebbe essere visualizzato quando si tenta di accedere alla pagina Riepilogo VSC dopo aver implementato l'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA).
+
+
+
+== Descrizione
+
+Quando si tenta di accedere al dashboard VSC dopo l'implementazione dell'appliance virtuale per VSC, VASA Provider e SRA, potrebbe verificarsi un errore perché il processo di inizializzazione dello scheduler non è completo.
+
+
+
+== Soluzione alternativa
+
+Dopo l'implementazione dell'appliance virtuale, attendere alcuni secondi per il completamento del processo di inizializzazione dello scheduler delle prestazioni, quindi fare clic su image:../media/dashboard-refresh-icon.gif[""] per ottenere i dati più recenti.

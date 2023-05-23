@@ -1,0 +1,31 @@
+---
+permalink: deploy/task-run-the-gos-timeout-scripts-for-windows.html 
+sidebar: sidebar 
+keywords: setting, timeout, values, windows, guest, operating, systems, 
+summary: Gli script di timeout del sistema operativo guest impostano le impostazioni di timeout i/o SCSI per i sistemi operativi guest di Windows. È possibile specificare un timeout di 60 secondi o di 190 secondi. Per rendere effettive le impostazioni, è necessario riavviare il sistema operativo guest di Windows. 
+---
+= Impostare i valori di timeout per i sistemi operativi guest di Windows
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Gli script di timeout del sistema operativo guest impostano le impostazioni di timeout i/o SCSI per i sistemi operativi guest di Windows. È possibile specificare un timeout di 60 secondi o di 190 secondi. Per rendere effettive le impostazioni, è necessario riavviare il sistema operativo guest di Windows.
+
+.Prima di iniziare
+È necessario aver montato l'immagine ISO contenente lo script di Windows.
+
+.Fasi
+. Accedere alla console della macchina virtuale Windows e a un account con privilegi di amministratore.
+. Se lo script non si avvia automaticamente, aprire l'unità CD ed eseguire `windows_gos_timeout.reg` script.
++
+Viene visualizzata la finestra di dialogo Editor del Registro di sistema.
+
+. Fare clic su *Sì* per continuare.
++
+Viene visualizzato il seguente messaggio: `The keys and values contained in D:\windows_gos_timeout.reg have been successfully added to the registry.`
+
+. Riavviare il sistema operativo guest di Windows.
+. Smontare l'immagine ISO.
+

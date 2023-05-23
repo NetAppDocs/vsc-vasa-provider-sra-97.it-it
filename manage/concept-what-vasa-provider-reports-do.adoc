@@ -1,0 +1,64 @@
+---
+permalink: manage/concept-what-vasa-provider-reports-do.html 
+sidebar: sidebar 
+keywords: VSC, VASA Provider, and SRA 
+summary: 'I report di vVols visualizzano informazioni dettagliate sugli archivi dati di VMware Virtual Volumes (vVols) e sulle macchine virtuali create su questi datastore. La dashboard di vVol consente di esaminare e identificare potenziali problemi con i datastore e le macchine virtuali di vVol nel server vCenter.' 
+---
+= Rapporti vVol
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I report di vVols visualizzano informazioni dettagliate sugli archivi dati di VMware Virtual Volumes (vVols) e sulle macchine virtuali create su questi datastore. La dashboard di vVol consente di esaminare e identificare potenziali problemi con i datastore e le macchine virtuali di vVol nel server vCenter.
+
+È possibile visualizzare, organizzare ed esportare i report. I dati per i report datastore e macchine virtuali di vVol sono forniti da ONTAP insieme ai servizi API di OnCommand.
+
+VVol fornisce i seguenti report predefiniti:
+
+* Report datastore vVol
+* Report vVol VM
+
+
+
+
+== Report datastore vVol
+
+Il menu *vVol Datastore Report* fornisce informazioni sui seguenti parametri per gli archivi dati:
+
+* Nome datastore vVol
+* Spazio libero
+* Spazio utilizzato
+* Spazio totale
+* Percentuale di spazio utilizzato
+* Percentuale di spazio disponibile
+* IOPS
+* Latenza
+
+
+È inoltre possibile verificare l'ora in cui è stato generato il report. Il menu *vVol Datastore Report* consente di organizzare il report in base alle proprie esigenze ed esportare il report organizzato utilizzando il pulsante *Export to CSV* (Esporta in CSV). Ciascun nome del datastore SAN vVols nel report è un collegamento che passa alla scheda *Monitor* del datastore SAN vVols selezionato, che è possibile utilizzare per visualizzare le metriche delle performance.
+
+
+
+== Report di vVol Virtual Machine
+
+Il menu *report di riepilogo delle macchine virtuali vVol* fornisce le seguenti metriche delle performance per tutte le macchine virtuali che utilizzano gli archivi dati SAN vVol forniti dal provider VASA per ONTAP per un server vCenter selezionato:
+
+* Nome della macchina virtuale
+* Capacità impegnata
+* Uptime
+* Throughput
++
+Il report indica se la macchina virtuale è accesa o spenta.
+
+* Spazio logico
+* Host
+* Stato di alimentazione
+* Latenza
++
+Il report visualizza la latenza per le macchine virtuali in tutti gli archivi dati vVol associati alle macchine virtuali.
+
+
+
+Ogni nome di macchina virtuale nel report è un collegamento alla scheda *Monitor* della macchina virtuale selezionata. È possibile organizzare il report della macchina virtuale in base alle proprie esigenze ed esportarlo in `.CSV` formattare, quindi salvare il report sul sistema locale. La data e l'ora del report vengono aggiunte al report salvato.

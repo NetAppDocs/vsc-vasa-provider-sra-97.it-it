@@ -1,0 +1,47 @@
+---
+permalink: deploy/concept-requirements-for-registering-vsc-in-multiple-vcenter-servers-environment.html 
+sidebar: sidebar 
+keywords: requirements, registering, vsc, multiple, vcenter, servers, environment, 
+summary: 'Se si utilizza Virtual Storage Console per VMware vSphere in un ambiente in cui è presente un singolo client VMware vSphere HTML5. Se si gestiscono più istanze di vCenter Server, è necessario registrare un"istanza di VSC con ciascun vCenter Server in modo che vi sia un"associazione 1:1 tra VSC e vCenter Server. Questa operazione consente di gestire tutti i server che eseguono vCenter 6.0 o versioni successive in modalità Linked e non Linked da un singolo client vSphere HTML5.' 
+---
+= Requisiti per la registrazione di VSC in un ambiente con più vCenter Server
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizza Virtual Storage Console per VMware vSphere in un ambiente in cui è presente un singolo client VMware vSphere HTML5. Se si gestiscono più istanze di vCenter Server, è necessario registrare un'istanza di VSC con ciascun vCenter Server in modo che vi sia un'associazione 1:1 tra VSC e vCenter Server. Questa operazione consente di gestire tutti i server che eseguono vCenter 6.0 o versioni successive in modalità Linked e non Linked da un singolo client vSphere HTML5.
+
+[NOTE]
+====
+Se si desidera utilizzare VSC con un vCenter Server, è necessario aver impostato o registrato un'istanza VSC per ogni istanza di vCenter Server che si desidera gestire. Ogni istanza VSC registrata deve essere della stessa versione.
+
+====
+Linked mode viene installato automaticamente durante l'implementazione di vCenter Server. Linked mode utilizza Microsoft Active Directory Application Mode (ADAM) per memorizzare e sincronizzare i dati su più sistemi vCenter Server.
+
+L'utilizzo del client vSphere HTML5 per eseguire attività VSC su più vCenter Server richiede quanto segue:
+
+* Ogni vCenter Server nell'inventario VMware che si desidera gestire deve disporre di un singolo server VSC registrato con esso in un'unica associazione 1:1.
++
+Ad esempio, è possibile avere il server VSC A registrato su vCenter Server A, il server VSC B registrato su vCenter Server B, il server VSC C registrato su vCenter Server C e così via.
+
++
+Non è possibile* avere il server VSC A registrato su vCenter Server A e vCenter Server B.
+
++
+Se un inventario VMware include un vCenter Server che non dispone di un server VSC registrato, ma sono presenti uno o più vCenter Server registrati con VSC, Quindi, è possibile visualizzare le istanze di VSC ed eseguire operazioni VSC per i server vCenter che hanno registrato VSC.
+
+* È necessario disporre del privilegio View specifico di VSC per ogni vCenter Server registrato nel Single Sign-on (SSO).
++
+È inoltre necessario disporre delle autorizzazioni RBAC corrette.
+
+
+
+Quando si esegue un'attività che richiede di specificare un vCenter Server, la casella a discesa *vCenter Server* visualizza i vCenter Server disponibili in ordine alfanumerico. Il server vCenter predefinito è sempre il primo server nell'elenco a discesa.
+
+Se la posizione dello storage è nota (ad esempio, quando si utilizza la procedura guidata *Provisioning* e il datastore si trova su un host gestito da uno specifico vCenter Server), l'elenco vCenter Server viene visualizzato come opzione di sola lettura. Ciò si verifica solo se si utilizza l'opzione del pulsante destro del mouse per selezionare un elemento nel client Web vSphere.
+
+VSC avvisa l'utente quando tenta di selezionare un oggetto non gestito.
+
+È possibile filtrare i sistemi storage in base a uno specifico vCenter Server dalla pagina di riepilogo di VSC. Viene visualizzata una pagina di riepilogo per ogni istanza di VSC registrata con un vCenter Server. È possibile gestire i sistemi di storage associati a un'istanza VSC specifica e a vCenter Server, ma è necessario mantenere separate le informazioni di registrazione per ciascun sistema di storage se si eseguono più istanze di VSC.

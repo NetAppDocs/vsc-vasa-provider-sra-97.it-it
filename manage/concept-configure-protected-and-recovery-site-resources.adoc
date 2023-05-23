@@ -1,0 +1,22 @@
+---
+permalink: manage/concept-configure-protected-and-recovery-site-resources.html 
+sidebar: sidebar 
+keywords: configuring, protected, and, recovery, site, resources, 
+summary: È necessario configurare le mappature delle risorse, ad esempio le reti di macchine virtuali, gli host ESXi e le cartelle su entrambi i siti, per consentire il mapping di ciascuna risorsa dal sito protetto alla risorsa appropriata nel sito di ripristino. 
+---
+= Configurare le risorse protette e del sito di ripristino
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario configurare le mappature delle risorse, ad esempio le reti di macchine virtuali, gli host ESXi e le cartelle su entrambi i siti, per consentire il mapping di ciascuna risorsa dal sito protetto alla risorsa appropriata nel sito di ripristino.
+
+È necessario completare le seguenti configurazioni delle risorse:
+
+* Mappature di rete
+* Mappature delle cartelle
+* Mappature delle risorse
+* Datastore segnaposto
+

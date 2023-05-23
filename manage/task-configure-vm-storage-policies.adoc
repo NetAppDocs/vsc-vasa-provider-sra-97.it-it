@@ -1,0 +1,37 @@
+---
+permalink: manage/task-configure-vm-storage-policies.html 
+sidebar: sidebar 
+keywords: configuring, vm, storage, policies, 
+summary: È necessario configurare le policy di storage delle macchine virtuali per gestire le macchine virtuali configurate sul datastore vVols e per abilitare servizi come la replica dei dischi virtuali. Per i datastore tradizionali, è facoltativo utilizzare queste policy di storage delle macchine virtuali. 
+---
+= Configurare i criteri di storage delle macchine virtuali
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario configurare le policy di storage delle macchine virtuali per gestire le macchine virtuali configurate sul datastore vVols e per abilitare servizi come la replica dei dischi virtuali. Per i datastore tradizionali, è facoltativo utilizzare queste policy di storage delle macchine virtuali.
+
+.A proposito di questa attività
+Il client Web vSphere fornisce policy di storage predefinite. Tuttavia, è possibile creare policy e assegnarle alle macchine virtuali.
+
+.Fasi
+. Nella pagina del client vSphere, fare clic su menu:Menu[Policies and Profiles] (Menu[Policy e profili]).
+. Fare clic sul menu:Criteri di storage delle macchine virtuali[Crea policy di storage delle macchine virtuali].
+. Nella pagina Create VM Storage Policy (Crea policy di storage VM), fornire i seguenti dettagli:
++
+.. Immettere un nome e una descrizione per la policy di storage della macchina virtuale.
+.. Selezionare *Enable rules for "NetApp Clustered Data ONTAP.VP.vvol" storage*.
+.. Selezionare il profilo di capacità storage richiesto nella scheda *posizionamento*.
+.. Selezionare l'opzione *Custom* per attivare la replica.
+.. Fare clic su *ADD RULE* (AGGIUNGI REGOLA) per selezionare *Asynchronous* Replication (replica asincrona) e Required *SnapMirror Schedule* (Pianificazione SnapMirror), quindi fare clic su *NEXT
+.. Verificare gli archivi dati compatibili elencati, quindi fare clic su *NEXT* nella scheda *Storage Compatibility*.
++
+Per i datastore vVol con volumi FlexVol per la protezione dei dati, non viene eseguito il controllo degli archivi dati compatibili.
+
+
+
+. Esaminare la selezione di VM Storage Policy (criterio di storage delle macchine virtuali) nella scheda *Review and Finish* (esamina e termina), quindi fare clic su *Finish* (fine).
+

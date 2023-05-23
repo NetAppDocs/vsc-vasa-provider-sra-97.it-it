@@ -1,0 +1,30 @@
+---
+permalink: manage/concept-configure-replication-for-vvols-datastore.html 
+sidebar: sidebar 
+keywords: configuring, replication, for, vvols, datastore, 
+summary: 'È possibile configurare la replica per il datastore vVols utilizzando l"appliance virtuale per VSC, VASA Provider e SRA. Lo scopo principale della replica di vVol è proteggere le macchine virtuali critiche durante il disaster recovery utilizzando VMware Site Recovery Manager (SRM).' 
+---
+= Configurare la replica per il datastore vVols
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile configurare la replica per il datastore vVols utilizzando l'appliance virtuale per VSC, VASA Provider e SRA. Lo scopo principale della replica di vVol è proteggere le macchine virtuali critiche durante il disaster recovery utilizzando VMware Site Recovery Manager (SRM).
+
+Tuttavia, per configurare la replica di vVol per l'appliance virtuale per VSC, VASA Provider e SRA, è necessario attivare la funzionalità VASA Provider e la replica vVol. IL provider VASA è attivato per impostazione predefinita nell'appliance virtuale per VSC, VASA Provider e SRA. La replica basata su array viene eseguita a livello di FlexVol. Ogni datastore vVol viene mappato a un container di storage costituito da uno o più volumi FlexVol. I volumi FlexVol devono essere preconfigurati con SnapMirror di ONTAP.
+
+[NOTE]
+====
+Non si consiglia di configurare una combinazione di macchine virtuali protette e non protette in un singolo datastore vVols. Un'operazione di protezione successiva al failover causerà l'eliminazione delle macchine virtuali non protette. Assicurarsi che tutte le macchine virtuali in un datastore vVols siano protette quando si utilizza la replica.
+
+====
+I gruppi di replica vengono creati durante il flusso di lavoro di creazione del datastore vVol per ogni volume FlexVol. Per utilizzare la replica di vVol, è necessario creare policy di storage delle macchine virtuali che includano lo stato e la pianificazione della replica insieme al profilo delle funzionalità di storage. Un gruppo di replica include macchine virtuali replicate come parte del disaster recovery nel sito di destinazione. È possibile configurare gruppi di replica con gruppi di protezione e piani di ripristino utilizzando la console SRM per i flussi di lavoro DR.
+
+[NOTE]
+====
+Se si utilizza il disaster recovery per il datastore vVols, non è necessario configurare separatamente Storage Replication Adapter (SRA), in quanto la funzionalità del provider VASA è stata migliorata per la replica di vVols.
+
+====
+image::../media/vvols-replication.png[replica di vvols]

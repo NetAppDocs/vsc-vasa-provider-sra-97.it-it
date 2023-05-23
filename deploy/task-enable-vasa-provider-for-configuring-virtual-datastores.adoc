@@ -1,0 +1,36 @@
+---
+permalink: deploy/task-enable-vasa-provider-for-configuring-virtual-datastores.html 
+sidebar: sidebar 
+keywords: enabling, vasa, provider, for, configuring, virtual, datastores, 
+summary: 'Per impostazione predefinita, l"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) dispone della funzione VASA Provider (Provider VASA) attivata. È possibile configurare gli archivi dati di VMware Virtual Volumes (vVols) con i profili di funzionalità storage richiesti per ciascun datastore vVols.' 
+---
+= Abilitare il provider VASA per la configurazione di datastore virtuali
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Per impostazione predefinita, l'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) dispone della funzione VASA Provider (Provider VASA) attivata. È possibile configurare gli archivi dati di VMware Virtual Volumes (vVols) con i profili di funzionalità storage richiesti per ciascun datastore vVols.
+
+.Prima di iniziare
+* È necessario aver configurato l'istanza di vCenter Server e ESXi.
+* È necessario aver implementato l'appliance virtuale per VSC, VASA Provider e SRA.
+
+
+.A proposito di questa attività
+Se la funzionalità del provider VASA viene disattivata prima dell'aggiornamento alla versione 9.7.1 dell'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA), la funzionalità del provider VASA rimane disattivata dopo l'aggiornamento. Questa release consente di attivare la funzione di replica vVols per gli archivi dati vVols.
+
+.Fasi
+. Accedere all'interfaccia utente Web di VMware vSphere.
+. Dal client vSphere, fare clic su menu:Menu[Virtual Storage Console].
+. Fare clic su *Impostazioni*.
+. Fare clic su *Manage Capabilities* (Gestisci funzionalità) nella scheda *Administrative Settings* (Impostazioni amministrative).
+. Nella finestra di dialogo *Manage Capabilities* (Gestisci funzionalità), selezionare l'interno del provider VASA da attivare.
+. Se si desidera utilizzare la funzionalità di replica per gli archivi dati vVols, utilizzare il pulsante di commutazione *Enable vVols Replication* (attiva replica vVols).
+. Inserire l'indirizzo IP dell'appliance virtuale per VSC, VASA Provider e SRA e la password dell'amministratore, quindi fare clic su *Apply* (Applica).
+
+
+.Al termine
+Se si utilizzano cluster ONTAP 9.6 o precedenti, è necessario registrarsi con il provider VASA per ottenere informazioni dettagliate sui datastore vVol e sulle macchine virtuali utilizzati nei report datastore SAN vVols VM e SAN vVols. Tuttavia, se si utilizza ONTAP 9.7 o versione successiva, non è necessario registrarsi con il provider VASA.

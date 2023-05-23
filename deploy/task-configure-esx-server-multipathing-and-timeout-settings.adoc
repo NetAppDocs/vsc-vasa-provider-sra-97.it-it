@@ -1,0 +1,31 @@
+---
+permalink: deploy/task-configure-esx-server-multipathing-and-timeout-settings.html 
+sidebar: sidebar 
+keywords: configuring, esxi, server, multipathing, timeout, settings, 
+summary: Virtual Storage Console per VMware vSphere controlla e imposta le impostazioni di multipathing host ESXi e le impostazioni di timeout HBA che funzionano meglio con i sistemi storage. 
+---
+= Configurare le impostazioni di multipathing e timeout del server ESXi
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Virtual Storage Console per VMware vSphere controlla e imposta le impostazioni di multipathing host ESXi e le impostazioni di timeout HBA che funzionano meglio con i sistemi storage.
+
+.A proposito di questa attività
+Questo processo potrebbe richiedere molto tempo, a seconda della configurazione e del carico di sistema. L'avanzamento dell'attività viene visualizzato nel pannello *attività recenti*. Una volta completate le attività, l'icona Avviso di stato dell'host viene sostituita dall'icona normale o dall'icona di riavvio in sospeso.
+
+.Fasi
+. Dalla pagina iniziale di VMware vSphere Web Client, fare clic su menu:vCenter[hosts].
+. Fare clic con il pulsante destro del mouse su un host, quindi selezionare menu:Actions[NetApp VSC > Set Recommended Values] (azioni[NetApp VSC > Imposta valori consigliati]).
+. Nella finestra di dialogo *NetApp Recommended Settings* (Impostazioni consigliate NetApp), selezionare i valori più adatti al sistema.
++
+I valori standard e consigliati sono impostati per impostazione predefinita.
+
++
+image::../media/vsc-recommended-hosts-settings.gif[impostazioni host consigliate per vsc]
+
+. Fare clic su *OK*.
+

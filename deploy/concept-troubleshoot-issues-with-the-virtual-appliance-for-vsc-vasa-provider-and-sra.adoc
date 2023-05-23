@@ -1,0 +1,14 @@
+---
+permalink: deploy/concept-troubleshoot-issues-with-the-virtual-appliance-for-vsc-vasa-provider-and-sra.html 
+sidebar: sidebar 
+keywords: troubleshooting, issues, virtual, appliance, vsc, vasa, provider, sra, 
+summary: 'Se durante l"installazione o la configurazione dell"appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) si verificano comportamenti imprevisti, è possibile seguire specifiche procedure di risoluzione dei problemi per identificare e risolvere la causa di tali problemi.' 
+---
+= Risolvere i problemi relativi all'appliance virtuale per VSC, VASA Provider e SRA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se durante l'installazione o la configurazione dell'appliance virtuale per Virtual Storage Console (VSC), VASA Provider e Storage Replication Adapter (SRA) si verificano comportamenti imprevisti, è possibile seguire specifiche procedure di risoluzione dei problemi per identificare e risolvere la causa di tali problemi.

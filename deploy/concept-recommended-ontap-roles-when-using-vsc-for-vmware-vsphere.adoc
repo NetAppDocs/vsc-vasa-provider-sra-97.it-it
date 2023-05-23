@@ -1,0 +1,52 @@
+---
+permalink: deploy/concept-recommended-ontap-roles-when-using-vsc-for-vmware-vsphere.html 
+sidebar: sidebar 
+keywords: recommended, ontap, roles, when, using, vsc, vmware, vsphere, 
+summary: 'È possibile impostare diversi ruoli ONTAP consigliati per lavorare con la console di storage virtuale per VMware vSphere e il RBAC (role-based access control). Questi ruoli contengono i privilegi di ONTAP necessari per eseguire le operazioni di storage richieste eseguite dalle attività (VSC).' 
+---
+= Ruoli ONTAP consigliati quando si utilizza VSC per VMware vSphere
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile impostare diversi ruoli ONTAP consigliati per lavorare con la console di storage virtuale per VMware vSphere e il RBAC (role-based access control). Questi ruoli contengono i privilegi di ONTAP necessari per eseguire le operazioni di storage richieste eseguite dalle attività (VSC).
+
+Per creare nuovi ruoli utente, è necessario accedere come amministratore nei sistemi storage che eseguono ONTAP. È possibile creare ruoli ONTAP utilizzando una delle seguenti opzioni:
+
+* 9.7 o versione successiva
++
+link:task-configure-user-role-and-privileges.html["Configurare i ruoli e i privilegi degli utenti"]
+
+* Tool RBAC User Creator per ONTAP (se si utilizza ONTAP 9.6 o versione precedente)
++
+https://community.netapp.com/t5/Virtualization-Articles-and-Resources/RBAC-User-Creator-tool-for-VSC-VASA-Provider-and-Storage-Replication-Adapter-7-0/ta-p/133203["Tool RBAC User Creator per VSC, VASA Provider e Storage Replication Adapter 7.0 per VMware vSphere"^]
+
+
+
+A ciascun ruolo di ONTAP è associata una coppia di nome utente e password, che costituiscono le credenziali del ruolo. Se non si effettua l'accesso utilizzando queste credenziali, non è possibile accedere alle operazioni di storage associate al ruolo.
+
+Come misura di sicurezza, i ruoli ONTAP specifici del VSC sono ordinati gerarchicamente. Ciò significa che il primo ruolo è il ruolo più restrittivo e dispone solo dei privilegi associati al set più semplice di operazioni di storage VSC. Il ruolo successivo include sia i propri privilegi che tutti i privilegi associati al ruolo precedente. Ogni ruolo aggiuntivo è meno restrittivo per quanto riguarda le operazioni di storage supportate.
+
+Di seguito sono riportati alcuni dei ruoli RBAC ONTAP consigliati quando si utilizza VSC. Dopo aver creato questi ruoli, è possibile assegnare i ruoli agli utenti che devono eseguire attività correlate allo storage, ad esempio il provisioning delle macchine virtuali.
+
+. Discovery (rilevamento)
++
+Questo ruolo consente di aggiungere sistemi storage.
+
+. Creare storage
++
+Questo ruolo consente di creare storage. Questo ruolo include anche tutti i privilegi associati al ruolo Discovery.
+
+. Modificare lo storage
++
+Questo ruolo consente di modificare lo storage. Questo ruolo include anche tutti i privilegi associati al ruolo Discovery e al ruolo Create Storage.
+
+. Distruggere lo storage
++
+Questo ruolo consente di distruggere lo storage. Questo ruolo include anche tutti i privilegi associati al ruolo Discovery, al ruolo Create Storage e al ruolo Modify Storage.
+
+
+
+Se si utilizza il provider VASA per ONTAP, è necessario impostare anche un ruolo di gestione basato su policy (PBM). Questo ruolo consente di gestire lo storage utilizzando le policy di storage. Questo ruolo richiede anche la configurazione del ruolo "`DDiscovery`".
