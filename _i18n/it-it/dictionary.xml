@@ -1839,7 +1839,6 @@
   <block id="7e6bb57f09cc81cf29e541b0a3598654" category="list-text"><block ref="7e6bb57f09cc81cf29e541b0a3598654" category="inline-link-rx"></block></block>
   <block id="5358757de9216cc29d688612a3d72fe1" category="inline-link">Documentazione di ONTAP 9</block>
   <block id="7d1750eaf694ea55e3ed364bf2fc1139" category="list-text"><block ref="7d1750eaf694ea55e3ed364bf2fc1139" category="inline-link-rx"></block></block>
-  <block id="bc61d0b08d1fd7734eecaba3c782ee73" category="summary">Documentazione per Virtual Storage Console per VMware vSphere, documentazione VSC, documentazione VSC</block>
   <block id="2a72439647125372a883f6f62a3b3b97" category="doc">Documentazione VSC, VASA Provider e SRA</block>
   <block id="9ce16530dad5761d1de1ee236c145dcd" category="sidebar">Documenti VSC, VASA Provider e SRA</block>
   <block id="06ad314b340900d226b1196e1fe289e9" category="sidebar">Avvio rapido</block>
@@ -1858,4 +1857,7 @@
   <block id="dec3e9da01f86a71bed912a019fad778" category="sidebar">Lo stato del provider VASA viene visualizzato come "Offline" (non in linea) nella GUI di vCenter Server</block>
   <block id="07a4e02530218bb020bf2b5915f43cde" category="sidebar">configurare gli script del sistema operativo guest</block>
   <block id="d036f2c382984088af9c7b41532db232" category="sidebar">Requisiti per la registrazione di VSC in un ambiente con più vCenter Server</block>
+  <block id="59b25b58a320cb1bd7e03ff77563a7d1" category="sidebar">Virtual Storage Console per VSC, VASA Provider e SRA ti consentono di configurare, gestire e proteggere i datastore virtuali nell'ambiente vCenter Server.</block>
+  <block id="457ec720234469b4fc2740e0d3e8b0bc" category="sidebar">Documentazione di Virtual Storage Console per VMware vSphere, documenti VSC, documentazione VSC.</block>
+  <block id="43fe6507a14726ae86f2c7d411f9b929" category="sidebar">Documentazione dei tool ONTAP per VMware vSphere</block>
 </blocks>
